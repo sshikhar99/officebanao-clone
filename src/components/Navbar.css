@@ -1,95 +1,97 @@
-/* Bar */
+/* Navbar container */
 .navbar {
-  position: sticky;
+  position: fixed;
   top: 0;
+  width: 100%;
   z-index: 1000;
-  background: #ffffff;
-  border-bottom: 1px solid rgba(0,0,0,0.06);
-  transition: box-shadow 0.2s ease;
+  background: white;
+  border-bottom: 1px solid #eee;
 }
 
-.navbar.scrolled {
-  box-shadow: 0 6px 16px rgba(0,0,0,0.06);
-}
-
-/* Inner container */
 .navbar-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 12px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  padding: 12px 24px;
 }
 
-/* Logo */
 .navbar-logo {
-  font-size: 22px;
-  font-weight: 800;
+  font-size: 20px;
+  font-weight: bold;
   color: #00bcd4;
   cursor: pointer;
 }
 
-/* Links */
-nav.navbar .navbar-links {
-  list-style: none;          /* remove bullets */
-  display: flex;             /* horizontal */
-  align-items: center;
-  gap: 28px;
-  margin: 0;
-  padding: 0;
+/* Default nav links (desktop) */
+.navbar-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
 }
 
 .navbar-links li {
   cursor: pointer;
-  font-size: 16px;
-  font-weight: 500;
-  color: #333;
-  position: relative;
-  transition: color 0.2s ease;
 }
 
-.navbar-links li:hover { color: #00bcd4; }
-
-.navbar-links li.active::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -8px;
-  height: 2px;
-  background: #00bcd4;
+.navbar-links li.active {
+  font-weight: bold;
+  color: #00bcd4;
 }
 
-/* Phone */
-.navbar-contact { white-space: nowrap; }
-
-.call-btn {
-  display: inline-flex;
+/* Call button */
+.navbar-contact .call-btn {
+  display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 14px;
-  border-radius: 10px;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
   background: #00bcd4;
-  color: #fff;
-  font-weight: 700;
+  color: white;
   text-decoration: none;
 }
 
-.call-btn:hover { background: #0097a7; }
-
-.phone-emoji { line-height: 1; }
-.phone-text { letter-spacing: 0.2px; }
-
-/* Basic responsiveness */
-@media (max-width: 900px) {
-  .navbar-inner { padding: 12px 14px; }
-  nav.navbar .navbar-links { gap: 16px; }
-  .navbar-logo { font-size: 20px; }
-  .call-btn { padding: 8px 12px; }
+.phone-emoji {
+  font-size: 16px;
 }
 
-@media (max-width: 720px) {
-  nav.navbar .navbar-links { display: none; } /* keep it simple for small screens */
+.phone-text {
+  font-size: 14px;
+}
+
+/* HAMBURGER default (hidden on desktop) */
+.hamburger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* ============================= */
+/* MOBILE STYLES ONLY            */
+/* ============================= */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block; /* show hamburger */
+  }
+
+  /* hide desktop nav links by default */
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 15px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    padding: 10px;
+  }
+
+  /* show links when menu open */
+  .navbar-links.open {
+    display: flex;
+  }
+
+  .navbar-links li {
+    margin: 10px 0;
+  }
 }

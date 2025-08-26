@@ -1,16 +1,27 @@
-// src/components/Navbar.js
 import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const scrollToSection = (id) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    if (location.pathname !== "/") {
+      // redirect to home first
+      navigate("/");
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }, 300);
+    } else {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }
+    setMenuOpen(false);
   };
 
   useEffect(() => {
@@ -43,84 +54,55 @@ const Navbar = () => {
       <div className="navbar-inner">
         <div
           className="navbar-logo"
-          onClick={() =>
-            location.pathname === "/" ? scrollToSection("home") : (window.location.href = "/")
-          }
+          onClick={() => navigate("/")}
         >
           OfficeBanao.in
         </div>
 
-        <ul className="navbar-links">
-          {/* Home link - scroll on homepage, redirect if not */}
+        {/* Hamburger icon for mobile */}
+        <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+          ☰
+        </div>
+
+        <ul className={`navbar-links ${menuOpen ? "open" : ""}`}>
           <li
-            className={activeSection === "home" && location.pathname === "/" ? "active" : ""}
-            onClick={() =>
-              location.pathname === "/" ? scrollToSection("home") : (window.location.href = "/")
-            }
+            className={activeSection === "home" ? "active" : ""}
+            onClick={() => scrollToSection("home")}
           >
             Home
           </li>
-
-          {/* About */}
-          {location.pathname === "/" ? (
-            <li
-              className={activeSection === "about" ? "active" : ""}
-              onClick={() => scrollToSection("about")}
-            >
-              About
-            </li>
-          ) : (
-            <li>
-              <Link to="/#about">About</Link>
-            </li>
-          )}
-
-          {/* Projects - always separate page */}
-          <li className={location.pathname === "/projects" ? "active" : ""}>
-            <Link to="/projects">Projects</Link>
+          <li
+            className={activeSection === "about" ? "active" : ""}
+            onClick={() => scrollToSection("about")}
+          >
+            About
           </li>
 
-          {/* Walkthroughs */}
-          {location.pathname === "/" ? (
-            <li
-              className={activeSection === "walkthroughs" ? "active" : ""}
-              onClick={() => scrollToSection("walkthroughs")}
-            >
-              Walkthroughs
-            </li>
-          ) : (
-            <li>
-              <Link to="/#walkthroughs">Walkthroughs</Link>
-            </li>
-          )}
+          {/* Projects page link */}
+          <li className={location.pathname === "/projects" ? "active" : ""}>
+            <Link to="/projects" onClick={() => setMenuOpen(false)}>
+              Projects
+            </Link>
+          </li>
 
-          {/* Resources */}
-          {location.pathname === "/" ? (
-            <li
-              className={activeSection === "resources" ? "active" : ""}
-              onClick={() => scrollToSection("resources")}
-            >
-              Resources
-            </li>
-          ) : (
-            <li>
-              <Link to="/#resources">Resources</Link>
-            </li>
-          )}
-
-          {/* Contact */}
-          {location.pathname === "/" ? (
-            <li
-              className={activeSection === "contact" ? "active" : ""}
-              onClick={() => scrollToSection("contact")}
-            >
-              Contact
-            </li>
-          ) : (
-            <li>
-              <Link to="/#contact">Contact</Link>
-            </li>
-          )}
+          <li
+            className={activeSection === "walkthroughs" ? "active" : ""}
+            onClick={() => scrollToSection("walkthroughs")}
+          >
+            Walkthroughs
+          </li>
+          <li
+            className={activeSection === "resources" ? "active" : ""}
+            onClick={() => scrollToSection("resources")}
+          >
+            Resources
+          </li>
+          <li
+            className={activeSection === "contact" ? "active" : ""}
+            onClick={() => scrollToSection("contact")}
+          >
+            Contact
+          </li>
         </ul>
 
         <div className="navbar-contact">

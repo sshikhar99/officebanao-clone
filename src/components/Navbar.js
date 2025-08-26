@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { Link } from 'react-scroll';
-import logo from '../assets/logo.png';
+import React, { useState } from "react";
+import { Link } from "react-scroll";
+import logo from "../assets/logo.png";
 
 function Navbar() {
   const [open, setOpen] = useState(false);
@@ -11,12 +11,13 @@ function Navbar() {
         <img src={logo} alt="Logo" />
       </div>
 
-      <div className={`nav-links ${open ? 'open' : ''}`}>
-        <li><Link to="hero" smooth={true} duration={500} offset={-70}>Home</Link></li>
-        <li><Link to="projects" smooth={true} duration={500} offset={-70}>Projects</Link></li>
-        <li><Link to="how-we-work" smooth={true} duration={500} offset={-70}>How We Work</Link></li>
+      <ul className={`nav-links ${open ? "open" : ""}`}>
+        <li><Link to="about" smooth={true} duration={500} offset={-70}>About</Link></li>
+        <li><Link to="projects" smooth={true} duration={500} offset={-70}>Portfolio</Link></li>
+        <li><Link to="walkthroughs" smooth={true} duration={500} offset={-70}>Walkthroughs</Link></li>
+        <li><Link to="resources" smooth={true} duration={500} offset={-70}>Resources</Link></li>
         <li><Link to="contact" smooth={true} duration={500} offset={-70}>Contact</Link></li>
-      </div>
+      </ul>
 
       <div className="hamburger" onClick={() => setOpen(!open)}>
         <span></span>

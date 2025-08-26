@@ -1,97 +1,95 @@
-/* Navbar main container */
+/* Bar */
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 20px;
-  background: #ffffff;
-  position: fixed;
+  position: sticky;
   top: 0;
-  width: 100%;
   z-index: 1000;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  transition: box-shadow 0.2s ease;
+}
+
+.navbar.scrolled {
+  box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+}
+
+/* Inner container */
+.navbar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
 }
 
 /* Logo */
-.navbar-logo img {
-  height: 40px;
-  width: auto;
+.navbar-logo {
+  font-size: 22px;
+  font-weight: 800;
+  color: #00bcd4;
+  cursor: pointer;
 }
 
-/* Nav links (desktop) */
-.nav-links {
-  display: flex;
-  gap: 25px;
-  list-style: none;
+/* Links */
+nav.navbar .navbar-links {
+  list-style: none;          /* remove bullets */
+  display: flex;             /* horizontal */
+  align-items: center;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
 }
 
-.nav-links li {
-  list-style: none;
-}
-
-.nav-links li a {
-  text-decoration: none;
-  color: #333;
-  font-size: 1rem;
+.navbar-links li {
+  cursor: pointer;
+  font-size: 16px;
   font-weight: 500;
-  transition: color 0.3s ease;
-  cursor: pointer;
+  color: #333;
+  position: relative;
+  transition: color 0.2s ease;
 }
 
-.nav-links li a:hover {
-  color: #007bff;
+.navbar-links li:hover { color: #00bcd4; }
+
+.navbar-links li.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  height: 2px;
+  background: #00bcd4;
 }
 
-/* Hamburger menu (hidden on desktop) */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  gap: 5px;
+/* Phone */
+.navbar-contact { white-space: nowrap; }
+
+.call-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: #00bcd4;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
 }
 
-.hamburger span {
-  width: 25px;
-  height: 3px;
-  background: #333;
-  border-radius: 3px;
-  transition: all 0.3s ease;
+.call-btn:hover { background: #0097a7; }
+
+.phone-emoji { line-height: 1; }
+.phone-text { letter-spacing: 0.2px; }
+
+/* Basic responsiveness */
+@media (max-width: 900px) {
+  .navbar-inner { padding: 12px 14px; }
+  nav.navbar .navbar-links { gap: 16px; }
+  .navbar-logo { font-size: 20px; }
+  .call-btn { padding: 8px 12px; }
 }
 
-/* Mobile view */
-@media (max-width: 768px) {
-  /* Show hamburger */
-  .hamburger {
-    display: flex;
-  }
-
-  /* Hide nav-links by default */
-  .nav-links {
-    position: absolute;
-    top: 60px;
-    right: 0;
-    background: #ffffff;
-    flex-direction: column;
-    width: 220px;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-in-out;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    padding: 0;
-  }
-
-  .nav-links li {
-    padding: 15px 20px;
-    border-bottom: 1px solid #f0f0f0;
-  }
-
-  .nav-links li a {
-    font-size: 1rem;
-    display: block;
-  }
-
-  /* Open state */
-  .nav-links.open {
-    max-height: 500px; /* enough to show all links */
-  }
+@media (max-width: 720px) {
+  nav.navbar .navbar-links { display: none; } /* keep it simple for small screens */
 }

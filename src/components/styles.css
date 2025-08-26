@@ -1,0 +1,124 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Home Section with background */
+.home {
+  background: url("https://source.unsplash.com/1600x800/?office,workspace") no-repeat center center/cover;
+  color: white;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.home .overlay {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 50px;
+  border-radius: 10px;
+}
+
+/* Portfolio Images */
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+.card h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.logo { font-size: 20px; font-weight: bold; }
+.nav-links { list-style: none; display: flex; gap: 20px; }
+.nav-links li { cursor: pointer; }
+.btn { background: #007bff; color: white; padding: 8px 15px; border: none; border-radius: 5px; cursor: pointer; }
+.phone { margin-left: 15px; color: white; background: #28a745; padding: 8px 15px; border-radius: 5px; }
+
+/* Sections */
+.section { padding: 100px 20px; text-align: center; }
+.home { background: #f8f8f8; }
+.about { background: #fff; }
+.portfolio { background: #f8f8f8; }
+.walkthroughs { background: #fff; }
+.resources { background: #f8f8f8; }
+
+/* Portfolio Grid */
+.grid { display: flex; justify-content: center; gap: 20px; margin-top: 20px; }
+.card { background: white; padding: 40px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+
+/* Popup */
+.popup-overlay {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex; justify-content: center; align-items: center;
+}
+.popup {
+  background: white; padding: 30px; border-radius: 10px; width: 400px;
+  position: relative; text-align: center;
+}
+.popup h2 span { color: #ffcc00; }
+.popup form { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
+.popup input { padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
+.popup button { padding: 10px; border: none; border-radius: 5px; background: #007bff; color: white; cursor: pointer; }
+.close-btn { position: absolute; top: 10px; right: 10px; background: red; color: white; border: none; padding: 5px 10px; cursor: pointer; }
+
+/* Footer */
+.footer { padding: 20px; text-align: center; background: #222; color: #fff; }
+/* Hero Section */
+.home {
+  height: 100vh;
+  background: url("https://source.unsplash.com/1600x900/?office,workspace") no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  color: white;
+}
+
+.home::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* dark overlay */
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  padding: 20px;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.hero-content h1 span {
+  color: #00bcd4; /* highlight brand color */
+}
+
+.hero-content p {
+  font-size: 1.3rem;
+  font-weight: 300;
+}

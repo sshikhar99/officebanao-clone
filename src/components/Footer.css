@@ -1,8 +1,42 @@
-footer {
-  background-color: #111;
+/* src/components/Footer.css */
+
+.footer {
+  background: #222;
   color: #fff;
-  padding: 30px 20px;
   text-align: center;
-  font-weight: 500;
-  margin-top: 50px;
+  padding: 40px 20px 20px;
+}
+
+.footer-content h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #00bcd4;
+}
+
+.footer-content p {
+  margin: 8px 0;
+  font-size: 1rem;
+  color: #ccc;
+}
+
+.footer-contact p {
+  margin: 5px 0;
+}
+
+.footer-contact a {
+  color: #00bcd4;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.footer-contact a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.9rem;
+  color: #aaa;
 }

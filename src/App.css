@@ -1,235 +1,31 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+/* Add at the top of App.css or index.css */
+.slick-slider {
+  margin: 0 auto;
+  max-width: 900px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: black;
 }
 
 body {
-  background-color: #fff;
-  color: #1d1e2c;
-  line-height: 1.6;
-}
-
-.App {
-  padding-top: 70px; /* for fixed header */
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-/* Section styling */
-.section {
-  padding: 80px 20px;
-  max-width: 1000px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.section h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 20px;
-  color: #1d1e2c;
-}
-
-.section p {
-  font-size: 1.2rem;
-  color: #555;
-  line-height: 1.6;
-}
-
-/* Hero Section */
-.hero {
-  width: 100%;
-  min-height: 100vh;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: #fff;
-  position: relative;
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5);
-  z-index: 1;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 800px;
-}
-
-.hero h1 {
-  font-size: 4rem;
-  font-weight: 800;
-  line-height: 1.2;
-  margin-bottom: 20px;
-  background: linear-gradient(90deg, #f0a500, #ff6f61);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.hero p {
-  font-size: 1.5rem;
-  margin-bottom: 30px;
-  opacity: 0.85;
-}
-
-.hero-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.btn-primary {
-  background-color: #f0a500;
-  color: #1d1e2c;
-  padding: 15px 35px;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  border: none;
-  cursor: pointer;
-}
-
-.btn-primary:hover {
-  background-color: #fff;
-  color: #1d1e2c;
-  transform: translateY(-3px);
-}
-
-.btn-secondary {
-  background-color: rgba(255,255,255,0.2);
-  color: #fff;
-  padding: 15px 35px;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  border: 2px solid #fff;
-  cursor: pointer;
-}
-
-.btn-secondary:hover {
-  background-color: #fff;
-  color: #1d1e2c;
-  transform: translateY(-3px);
-}
-
-/* Projects Section */
-.projects-section {
-  padding: 60px 20px;
-  text-align: center;
-  background-color: #f9f9f9;
-}
-
-.projects-section h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 40px;
-  color: #1d1e2c;
-}
-
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.project-card {
-  overflow: hidden;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.project-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  display: block;
-}
-
-.project-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-}
-
-/* Modal Styles */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 200;
-}
-
-.modal-content {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
   background: #fff;
-  padding: 40px 30px;
-  border-radius: 12px;
-  max-width: 500px;
-  width: 90%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.hero {
+  min-height: 100vh;
+  background: url('./assets/hero-bg.jpg') no-repeat center center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  position: relative;
-}
-
-.modal-content h2 {
-  margin-bottom: 20px;
-  font-size: 1.8rem;
-  color: #1d1e2c;
-}
-
-.modal-content form input,
-.modal-content form textarea {
-  width: 100%;
-  padding: 12px 15px;
-  margin: 10px 0;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-}
-
-.modal-content form textarea {
-  resize: none;
-  height: 100px;
-}
-
-.modal-content form button {
-  margin-top: 10px;
-}
-
-.close-btn {
-  background-color: #f0a500;
   color: #fff;
-  margin-top: 15px;
-}
-
-
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-  .project-card img {
-    height: 180px;
-  }
 }

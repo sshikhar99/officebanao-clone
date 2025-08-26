@@ -1,19 +1,26 @@
 import React from "react";
-import "../App.css";
+import "./ProjectShowcase.css";
 import project1 from "../assets/project1.webp";
 import project2 from "../assets/project2.webp";
 import project3 from "../assets/project3.webp";
 
-const ProjectShowcase = () => {
-  const projects = [project1, project2, project3];
+const projects = [
+  { id: 1, img: project1, title: "Modern Office Interior" },
+  { id: 2, img: project2, title: "Collaborative Workspace" },
+  { id: 3, img: project3, title: "Creative Studio Design" },
+];
 
+const ProjectShowcase = () => {
   return (
-    <section id="projects" className="projects-section">
-      <h2>Our Projects</h2>
+    <section className="projects" id="projects">
+      <h2 className="projects-title">Our Projects</h2>
       <div className="project-grid">
-        {projects.map((proj, index) => (
-          <div key={index} className="project-card">
-            <img src={proj} alt={`Project ${index + 1}`} />
+        {projects.map((p) => (
+          <div className="project-card" key={p.id}>
+            <img src={p.img} alt={p.title} />
+            <div className="overlay">
+              <h3>{p.title}</h3>
+            </div>
           </div>
         ))}
       </div>

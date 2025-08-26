@@ -1,0 +1,84 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 100px 20px;
+  color: white;
+
+  /* Smooth gradient background */
+  background: linear-gradient(135deg, #1c1c1c, #0f2027, #203a43, #2c5364);
+}
+
+.hero-content {
+  max-width: 900px;
+  animation: fadeInUp 1.2s ease;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #ff3dff, #00c6ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+  margin: 20px 0;
+  font-size: 1.2rem;
+  color: #ddd;
+}
+
+.hero-buttons {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn {
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.enquire-btn {
+  background: white;
+  color: #000;
+}
+
+.enquire-btn:hover {
+  background: #ddd;
+}
+
+.projects-btn {
+  background: #00bcd4;
+  color: white;
+}
+
+.projects-btn:hover {
+  background: #0097a7;
+}
+
+/* Smooth fade-in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

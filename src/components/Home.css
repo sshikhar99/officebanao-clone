@@ -1,0 +1,13 @@
+.home {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #f8f8f8;
+  text-align: center;
+}
+
+.home h1 span {
+  color: #ff6600;
+}

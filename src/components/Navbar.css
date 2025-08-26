@@ -1,97 +1,104 @@
-/* Navbar container */
+/* Navbar.css */
 .navbar {
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
   background: white;
-  border-bottom: 1px solid #eee;
+  transition: all 0.3s ease;
+  box-shadow: none;
+}
+
+.navbar.scrolled {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-inner {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   padding: 12px 24px;
 }
 
 .navbar-logo {
   font-size: 20px;
   font-weight: bold;
-  color: #00bcd4;
   cursor: pointer;
 }
 
-/* Default nav links (desktop) */
+/* Desktop links */
 .navbar-links {
   display: flex;
-  gap: 20px;
   list-style: none;
+  gap: 20px;
 }
 
 .navbar-links li {
   cursor: pointer;
+  transition: color 0.3s ease;
 }
 
-.navbar-links li.active {
-  font-weight: bold;
-  color: #00bcd4;
+.navbar-links li.active,
+.navbar-links li:hover {
+  color: #007bff;
 }
 
-/* Call button */
+/* Contact button */
 .navbar-contact .call-btn {
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  border-radius: 8px;
-  background: #00bcd4;
+  background: #007bff;
   color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
   text-decoration: none;
-}
-
-.phone-emoji {
-  font-size: 16px;
-}
-
-.phone-text {
   font-size: 14px;
 }
 
-/* HAMBURGER default (hidden on desktop) */
-.hamburger {
+.navbar-contact .phone-emoji {
+  margin-right: 6px;
+}
+
+/* Mobile menu */
+.navbar-toggle {
   display: none;
-  font-size: 28px;
+  flex-direction: column;
+  gap: 5px;
   cursor: pointer;
 }
 
-/* ============================= */
-/* MOBILE STYLES ONLY            */
-/* ============================= */
+.navbar-toggle span {
+  width: 25px;
+  height: 3px;
+  background: black;
+  border-radius: 3px;
+}
+
+/* Mobile styles */
 @media (max-width: 768px) {
-  .hamburger {
-    display: block; /* show hamburger */
+  .navbar-inner {
+    flex-wrap: wrap;
   }
 
-  /* hide desktop nav links by default */
   .navbar-links {
     display: none;
     flex-direction: column;
-    position: absolute;
-    top: 60px;
-    right: 15px;
+    width: 100%;
+    margin-top: 10px;
     background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    padding: 10px;
+    padding: 10px 0;
+    border-top: 1px solid #ddd;
   }
 
-  /* show links when menu open */
   .navbar-links.open {
     display: flex;
   }
 
-  .navbar-links li {
-    margin: 10px 0;
+  .navbar-toggle {
+    display: flex;
+  }
+
+  .navbar-contact {
+    margin-top: 10px;
   }
 }

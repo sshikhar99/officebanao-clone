@@ -1,4 +1,3 @@
-// src/components/Portfolio.js
 import React from "react";
 import "./Portfolio.css";
 
@@ -8,7 +7,7 @@ import project3 from "../assets/project3.webp";
 
 function Portfolio() {
   return (
-    <section id="portfolio" className="portfolio">
+    <section id="projects" className="portfolio">
       <h2>Our Projects</h2>
       <p className="portfolio-subtitle">
         Some of our recent premium office interior designs

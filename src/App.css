@@ -1,4 +1,21 @@
-/* Add at the top of App.css or index.css */
+/* ------------------------------
+   Global Styles
+-------------------------------- */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #fff;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ------------------------------
+   Slick Carousel Overrides
+-------------------------------- */
 .slick-slider {
   margin: 0 auto;
   max-width: 900px;
@@ -9,23 +26,78 @@
   color: black;
 }
 
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: #fff;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
+/* ------------------------------
+   Hero Section
+-------------------------------- */
 .hero {
   min-height: 100vh;
-  background: url('./assets/hero-bg.jpg') no-repeat center center/cover;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
+  padding: 0 20px;
+
+  background: linear-gradient(135deg, #0a1f2d, #112d3f);
   color: #fff;
+}
+
+/* Headline */
+.hero h1 {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.hero h1 span {
+  background: linear-gradient(90deg, #c93cff, #00c7d6, #007bff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+/* Sub-text */
+.hero p {
+  max-width: 700px;
+  margin: 0 auto 32px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #ddd;
+}
+
+/* Buttons */
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.hero-buttons .btn-primary {
+  background: #00c7d6;
+  color: #fff;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.hero-buttons .btn-primary:hover {
+  background: #00a9b6;
+}
+
+.hero-buttons .btn-secondary {
+  background: #fff;
+  color: #333;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.hero-buttons .btn-secondary:hover {
+  background: #f0f0f0;
 }

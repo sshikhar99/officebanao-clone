@@ -1,38 +1,37 @@
-// src/components/HeroSection.js
 import React from "react";
-import { Link } from "react-scroll";
 import "./HeroSection.css";
 
 function HeroSection() {
+  const scrollToProjects = () => {
+    const el = document.getElementById("projects");
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const scrollToContact = () => {
+    const el = document.getElementById("contact");
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <section className="hero" id="home">
       <div className="hero-content">
         <h1>
-          Get Premium Office Interiors <br />
-          <span className="gradient-text">your employees will love!</span>
+          Get Premium Office Interiors <span>your employees will love!</span>
         </h1>
         <p>
-          Achieve your ideal office space in <b>75 days</b> with our
+          Achieve your ideal office space in <strong>75 days</strong> with our
           brand-centric designs, engineered for cost efficiency and operational
           excellence.
         </p>
+
+        {/* Only keep one set of buttons */}
         <div className="hero-buttons">
-          <Link
-            to="contact"
-            smooth={true}
-            duration={500}
-            className="btn enquire-btn"
-          >
+          <button className="btn-secondary" onClick={scrollToContact}>
             Enquire Now
-          </Link>
-          <Link
-            to="projects"
-            smooth={true}
-            duration={500}
-            className="btn projects-btn"
-          >
+          </button>
+          <button className="btn-primary" onClick={scrollToProjects}>
             View Projects →
-          </Link>
+          </button>
         </div>
       </div>
     </section>

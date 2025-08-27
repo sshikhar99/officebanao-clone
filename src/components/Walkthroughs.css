@@ -1,0 +1,65 @@
+.walkthroughs-wrap {
+  max-width: 980px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.walkthroughs-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #111;
+}
+
+.walkthroughs-sub {
+  color: #666;
+  font-size: 18px;
+  margin-bottom: 24px;
+}
+
+.walkthrough-img {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* slick custom tweaks */
+.slick-prev,
+.slick-next {
+  z-index: 2;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-size: 28px;
+  color: #00bcd4;
+}
+
+.slick-dots li button:before {
+  font-size: 12px;
+  color: #00bcd4;
+  opacity: 0.5;
+}
+
+.slick-dots li.slick-active button:before {
+  opacity: 1;
+  color: #007bff;
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .walkthrough-img {
+    height: 320px;
+  }
+
+  .walkthroughs-title {
+    font-size: 26px;
+  }
+
+  .walkthroughs-sub {
+    font-size: 16px;
+  }
+}

@@ -1,40 +1,24 @@
-// src/App.js
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import HeroSection from "./components/HeroSection";
-import About from "./components/About";
-import Walkthroughs from "./components/Walkthroughs";
-import Resources from "./components/Resources";
-import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-import ProjectsPage from "./pages/ProjectsPage";   // ✅ separate page
+import Home from "./components/Home";   // 👈 use your actual Home component
+import ProjectsPage from "./pages/ProjectsPage";
+import ScrollToTop from "./components/ScrollToTop";
 
-// Home page content
-function Home() {
+export default function App() {
   return (
-    <div>
-      <section id="home"><HeroSection /></section>
-      <section id="about"><About /></section>
-      <section id="walkthroughs"><Walkthroughs /></section>
-      <section id="resources"><Resources /></section>
-      <section id="contact"><Contact /></section>
-      <Footer />
-    </div>
-  );
-}
-
-function App() {
-  return (
-    <Router>
+    <>
       <Navbar />
+
+      {/* 👇 This ensures every route change scrolls to top */}
+      <ScrollToTop />  
+
       <Routes>
-        <Route path="/" element={<Home />} />             {/* Home */}
-        <Route path="/projects" element={<ProjectsPage />} /> {/* Projects */}
+        <Route path="/" element={<Home />} />
+        <Route path="/projects" element={<ProjectsPage />} />
       </Routes>
-    </Router>
+
+      <Footer />
+    </>
   );
 }
-
-export default App;

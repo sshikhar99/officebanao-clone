@@ -1,104 +1,101 @@
-/* Navbar.css */
-.navbar {
-  position: fixed;
+/* src/components/Navbar.css */
+
+/* --- Shell --- */
+.ob-navbar {
+  position: sticky; /* keeps it fixed while scrolling like SS1 */
   top: 0;
-  width: 100%;
   z-index: 1000;
-  background: white;
-  transition: all 0.3s ease;
-  box-shadow: none;
+  background: #ffffff;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
 }
 
-.navbar.scrolled {
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.navbar-inner {
+.ob-container {
+  max-width: 1200px;            /* keeps a neat line-length (SS1 look) */
+  margin: 0 auto;
+  padding: 14px 24px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: center;
-  padding: 12px 24px;
+  gap: 16px;
 }
 
-.navbar-logo {
-  font-size: 20px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-/* Desktop links */
-.navbar-links {
-  display: flex;
-  list-style: none;
-  gap: 20px;
-}
-
-.navbar-links li {
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
-
-.navbar-links li.active,
-.navbar-links li:hover {
-  color: #007bff;
-}
-
-/* Contact button */
-.navbar-contact .call-btn {
-  display: flex;
-  align-items: center;
-  background: #007bff;
-  color: white;
-  padding: 6px 12px;
-  border-radius: 20px;
+/* --- Logo --- */
+.ob-logo {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0f172a;
   text-decoration: none;
-  font-size: 14px;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
 }
 
-.navbar-contact .phone-emoji {
-  margin-right: 6px;
+/* --- Center nav --- */
+.ob-nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;                     /* spacing between links like SS1 */
+  flex: 1 1 auto;
+  justify-content: center;       /* center the links */
 }
 
-/* Mobile menu */
-.navbar-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
+.ob-link {
+  position: relative;
+  font-size: 16px;
+  font-weight: 500;
+  color: #1f2937;                /* slate-800 */
+  text-decoration: none;
+  padding: 8px 0;
+  line-height: 1;
 }
 
-.navbar-toggle span {
-  width: 25px;
+.ob-link:hover {
+  color: #0f172a;                /* slightly darker on hover */
+}
+
+/* underline effect for active + hover (SS1) */
+.ob-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -10px;
   height: 3px;
-  background: black;
-  border-radius: 3px;
+  background: transparent;
+  border-radius: 2px;
+  transition: background 180ms ease;
 }
 
-/* Mobile styles */
-@media (max-width: 768px) {
-  .navbar-inner {
-    flex-wrap: wrap;
-  }
+.ob-link:hover::after,
+.ob-link.active::after {
+  background: #10b981;           /* teal underline (close to SS1) */
+}
 
-  .navbar-links {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    margin-top: 10px;
-    background: white;
-    padding: 10px 0;
-    border-top: 1px solid #ddd;
-  }
+/* --- Call pill (right) --- */
+.ob-call {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #17c6d6;           /* teal/blue pill like SS1 */
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 14px;
+  border-radius: 9999px;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;           /* prevents the number from breaking */
+  min-width: fit-content;        /* avoids being clipped */
+}
 
-  .navbar-links.open {
-    display: flex;
-  }
+.ob-call-icon {
+  line-height: 1;
+}
 
-  .navbar-toggle {
-    display: flex;
-  }
+.ob-call:hover {
+  filter: brightness(1.05);
+}
 
-  .navbar-contact {
-    margin-top: 10px;
-  }
+/* --- Safety: don’t disturb desktop — mobile-only tweaks later --- */
+@media (max-width: 1024px) {
+  /* We’re NOT changing the layout yet to avoid breaking desktop.
+     When you’re ready for the mobile hamburger, we’ll add it here. */
 }

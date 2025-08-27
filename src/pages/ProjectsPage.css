@@ -1,21 +1,32 @@
 .projects-page {
-  padding: 40px;
   text-align: center;
+  padding: 50px 20px;
 }
 
-.projects-gallery {
+.projects-title {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.projects-subtitle {
+  margin-bottom: 30px;
+  color: #555;
+}
+
+.projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
-  margin-top: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .project-card {
   background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: transform 0.2s ease;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
 }
 
 .project-card:hover {
@@ -24,10 +35,5 @@
 
 .project-card img {
   width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.project-card h3 {
-  margin: 15px 0;
+  border-radius: 10px;
 }

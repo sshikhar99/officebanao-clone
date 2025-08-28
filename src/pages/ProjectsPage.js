@@ -1,35 +1,29 @@
 // src/pages/ProjectsPage.js
 import React from "react";
-import "./ProjectsPage.css";
+import useDeviceType from "../hooks/useDeviceType";
 
-import project1 from "../assets/project1.webp";
-import project2 from "../assets/project2.webp";
-import project3 from "../assets/project3.webp";
+// ===== Desktop imports =====
+import DesktopNavbar from "../components/Desktop/Navbar";
+import DesktopFooter from "../components/Desktop/Footer";
+import DesktopProjects from "../components/Desktop/Projects";
 
-function ProjectsPage() {
-  const projects = [
-    { id: 1, title: "Modern Workspace", img: project1 },
-    { id: 2, title: "Minimalist Office", img: project2 },
-    { id: 3, title: "Corporate Interiors", img: project3 },
-  ];
+// ===== Mobile imports =====
+import MobileNavbar from "../components/Mobile/Navbar";
+import MobileFooter from "../components/Mobile/Footer";
+import MobileProjects from "../components/Mobile/Projects";
+
+export default function ProjectsPage() {
+  const isMobile = useDeviceType();
 
   return (
-    <div className="projects-page">
-      <h1>Our Projects</h1>
-      <p className="subtitle">
-        Explore our collection of premium office interiors.
-      </p>
+    <>
+      {isMobile ? <MobileNavbar /> : <DesktopNavbar />}
 
-      <div className="projects-grid">
-        {projects.map((p) => (
-          <div key={p.id} className="project-card">
-            <img src={p.img} alt={p.title} />
-            <h3>{p.title}</h3>
-          </div>
-        ))}
-      </div>
-    </div>
+      <section id="projects">
+        {isMobile ? <MobileProjects /> : <DesktopProjects />}
+      </section>
+
+      {isMobile ? <MobileFooter /> : <DesktopFooter />}
+    </>
   );
 }
-
-export default ProjectsPage;

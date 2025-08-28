@@ -1,69 +1,55 @@
-// src/pages/Home.js
-import React, { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import HeroSection from "../components/HeroSection";
-import About from "../components/About";
-import Projects from "../components/Projects";
-import Walkthroughs from "../components/Walkthroughs";
-import Resources from "../components/Resources";
-import Contact from "../components/Contact";
+import React from "react";
+import useDeviceType from "../hooks/useDeviceType";
+
+// Desktop components
+import DesktopNavbar from "./Desktop/Navbar";
+import DesktopFooter from "./Desktop/Footer";
+import DesktopHero from "./Desktop/HeroSection";
+import DesktopAbout from "./Desktop/About";
+import DesktopProjects from "./Desktop/Projects";
+import DesktopWalkthroughs from "./Desktop/Walkthroughs";
+import DesktopResources from "./Desktop/Resources";
+import DesktopContact from "./Desktop/Contact";
+
+// Mobile components
+import MobileNavbar from "./Mobile/Navbar";
+import MobileFooter from "./Mobile/Footer";
+import MobileHero from "./Mobile/HeroSection";
+import MobileAbout from "./Mobile/About";
+import MobileProjects from "./Mobile/Projects";
+import MobileWalkthroughs from "./Mobile/Walkthroughs";
+import MobileResources from "./Mobile/Resources";
+import MobileContact from "./Mobile/Contact";
 
 function Home() {
-  const location = useLocation();
-  const navigate = useNavigate();
+  const isMobile = useDeviceType();
 
-  useEffect(() => {
-    let targetId = null;
-
-    // Case 1: Navigated with state (from Navbar click)
-    if (location.state?.scrollTo) {
-      targetId = location.state.scrollTo;
-    }
-
-    // Case 2: Navigated with hash in URL (like /#about or /#resources)
-    else if (location.hash) {
-      targetId = location.hash.replace("#", "");
-    }
-
-    if (targetId) {
-      const el = document.getElementById(targetId);
-      if (el) {
-        setTimeout(() => {
-          el.scrollIntoView({ behavior: "smooth", block: "start" });
-        }, 100); // slight delay ensures DOM is ready
-      }
-
-      // Clear state so it works again next time
-      navigate(location.pathname + location.hash, { replace: true, state: {} });
-    }
-  }, [location, navigate]);
+  if (isMobile) {
+    return (
+      <>
+        <MobileNavbar />
+        <section id="home"><MobileHero /></section>
+        <section id="about"><MobileAbout /></section>
+        <section id="projects"><MobileProjects /></section>
+        <section id="walkthroughs"><MobileWalkthroughs /></section>
+        <section id="resources"><MobileResources /></section>
+        <section id="contact"><MobileContact /></section>
+        <MobileFooter />
+      </>
+    );
+  }
 
   return (
-    <div>
-      <section id="home">
-        <HeroSection />
-      </section>
-
-      <section id="about">
-        <About />
-      </section>
-
-      <section id="projects">
-        <Projects />
-      </section>
-
-      <section id="walkthroughs">
-        <Walkthroughs />
-      </section>
-
-      <section id="resources">
-        <Resources />
-      </section>
-
-      <section id="contact">
-        <Contact />
-      </section>
-    </div>
+    <>
+      <DesktopNavbar />
+      <section id="home"><DesktopHero /></section>
+      <section id="about"><DesktopAbout /></section>
+      <section id="projects"><DesktopProjects /></section>
+      <section id="walkthroughs"><DesktopWalkthroughs /></section>
+      <section id="resources"><DesktopResources /></section>
+      <section id="contact"><DesktopContact /></section>
+      <DesktopFooter />
+    </>
   );
 }
 

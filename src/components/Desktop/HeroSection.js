@@ -24,7 +24,6 @@ function HeroSection() {
           excellence.
         </p>
 
-        {/* Only keep one set of buttons */}
         <div className="hero-buttons">
           <button className="btn-secondary" onClick={scrollToContact}>
             Enquire Now

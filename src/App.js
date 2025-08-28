@@ -1,24 +1,95 @@
-import { Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import Home from "./components/Home";   // 👈 use your actual Home component
-import ProjectsPage from "./pages/ProjectsPage";
+// src/App.js
+import React, { useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
+import useDeviceType from "./hooks/useDeviceType";
 import ScrollToTop from "./components/ScrollToTop";
 
-export default function App() {
+// ===== Desktop components =====
+import DesktopNavbar from "./components/Desktop/Navbar";
+import DesktopFooter from "./components/Desktop/Footer";
+import DesktopHero from "./components/Desktop/HeroSection";
+import DesktopAbout from "./components/Desktop/About";
+import DesktopProjects from "./components/Desktop/Projects";
+import DesktopWalkthroughs from "./components/Desktop/Walkthroughs";
+import DesktopResources from "./components/Desktop/Resources";
+import DesktopContact from "./components/Desktop/Contact";
+
+// ===== Mobile components =====
+import MobileNavbar from "./components/Mobile/Navbar";
+import MobileFooter from "./components/Mobile/Footer";
+import MobileHero from "./components/Mobile/HeroSection";
+import MobileAbout from "./components/Mobile/About";
+import MobileProjects from "./components/Mobile/Projects";
+import MobileWalkthroughs from "./components/Mobile/Walkthroughs";
+import MobileResources from "./components/Mobile/Resources";
+import MobileContact from "./components/Mobile/Contact";
+
+// Pages
+import ProjectsPage from "./pages/ProjectsPage";
+
+// ===== Desktop Home =====
+function DesktopHome() {
   return (
     <>
-      <Navbar />
+      <DesktopNavbar />
+      <section id="home"><DesktopHero /></section>
+      <section id="about"><DesktopAbout /></section>
+      <section id="projects"><DesktopProjects /></section>
+      <section id="walkthroughs"><DesktopWalkthroughs /></section>
+      <section id="resources"><DesktopResources /></section>
+      <section id="contact"><DesktopContact /></section>
+      <DesktopFooter />
+    </>
+  );
+}
 
-      {/* 👇 This ensures every route change scrolls to top */}
-      <ScrollToTop />  
+// ===== Mobile Home =====
+function MobileHome() {
+  return (
+    <>
+      <MobileNavbar />
+      <section id="home"><MobileHero /></section>
+      <section id="about"><MobileAbout /></section>
+      <section id="projects"><MobileProjects /></section>
+      <section id="walkthroughs"><MobileWalkthroughs /></section>
+      <section id="resources"><MobileResources /></section>
+      <section id="contact"><MobileContact /></section>
+      <MobileFooter />
+    </>
+  );
+}
+
+// ===== ScrollToSection handler =====
+function ScrollToSection() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.scrollTo) {
+      const el = document.getElementById(location.state.scrollTo);
+      if (el) {
+        // delay ensures DOM has rendered
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 100);
+      }
+    }
+  }, [location]);
+
+  return null;
+}
+
+export default function App() {
+  const isMobile = useDeviceType();
+
+  return (
+    <>
+      <ScrollToTop />
+      <ScrollToSection />
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={isMobile ? <MobileHome /> : <DesktopHome />} />
         <Route path="/projects" element={<ProjectsPage />} />
       </Routes>
-
-      <Footer />
     </>
   );
 }

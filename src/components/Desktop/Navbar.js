@@ -20,17 +20,26 @@ export default function Navbar() {
     e.preventDefault();
 
     if (isPage) {
-      navigate("/projects");
+      // Always navigate to /projects
+      if (location.pathname === "/projects") {
+        // already there → scroll to top
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      } else {
+        navigate("/projects");
+      }
       return;
     }
 
+    // For in-page sections (About, Walkthroughs, etc.)
     if (location.pathname !== "/") {
-      // ✅ send scroll target via state
+      // coming from /projects (or anywhere else) → go home, then scroll
       navigate("/", { state: { scrollTo: id } });
     } else {
-      // ✅ scroll directly on homepage
+      // Already on Home → just scroll
       const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
     }
   };
 
@@ -54,7 +63,7 @@ export default function Navbar() {
           {LINKS.map(({ id, label, isPage }) => (
             <a
               key={id}
-              href={isPage ? "/projects" : `#${id}`}
+              href={isPage ? "/projects" : `/#${id}`}
               onClick={handleClick(id, isPage)}
               className="ob-link"
             >

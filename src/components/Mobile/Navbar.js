@@ -32,6 +32,26 @@ export default function MobileNavbar() {
         OfficeBanao
       </div>
 
+      {/* Call button */}
+      <a
+        href="tel:+917683061117"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "6px",
+          background: "#00c4ff",
+          color: "#fff",
+          padding: "6px 12px",
+          borderRadius: "30px",
+          fontWeight: "600",
+          fontSize: "14px",
+          textDecoration: "none",
+          whiteSpace: "nowrap",
+        }}
+      >
+        📞 <span className="phone-text">+91 76830 61117</span>
+      </a>
+
       {/* Hamburger Button */}
       <div
         style={{ cursor: "pointer", fontSize: "26px" }}

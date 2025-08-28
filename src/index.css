@@ -10,6 +10,13 @@ html, body {
   background-color: #fff;
   color: #333;
 }
+/* Hide phone number text on very small screens */
+@media (max-width: 360px) {
+  .phone-text {
+    display: none;
+  }
+}
+
 
 /* Smooth scrolling across the whole site */
 html {

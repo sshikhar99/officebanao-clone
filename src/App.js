@@ -65,13 +65,19 @@ function ScrollToSection() {
 
   useEffect(() => {
     if (location.state?.scrollTo) {
-      const el = document.getElementById(location.state.scrollTo);
-      if (el) {
-        // delay ensures DOM has rendered
-        setTimeout(() => {
+      const targetId = location.state.scrollTo;
+
+      // Try multiple times in case DOM not ready yet
+      const tryScroll = (attempts = 5) => {
+        const el = document.getElementById(targetId);
+        if (el) {
           el.scrollIntoView({ behavior: "smooth", block: "start" });
-        }, 100);
-      }
+        } else if (attempts > 0) {
+          setTimeout(() => tryScroll(attempts - 1), 150);
+        }
+      };
+
+      tryScroll();
     }
   }, [location]);
 

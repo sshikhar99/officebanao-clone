@@ -1,26 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-body {
+/* Apply Poppins globally */
+html, body {
   margin: 0;
+  padding: 0;
   font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #fff;
+  color: #333;
 }
-
-
 
 /* Smooth scrolling across the whole site */
 html {
   scroll-behavior: smooth;
 }
 
-/* Reset body to remove unwanted margins */
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-}
-
-/* This is the important part:
-   It tells the browser to leave 90px space at the top 
-   when scrolling to a section (same height as your navbar). */
+/* Leave space for navbar when scrolling to anchors */
 section {
   scroll-margin-top: 90px;
 }

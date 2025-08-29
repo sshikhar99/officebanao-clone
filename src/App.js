@@ -13,6 +13,8 @@ import DesktopProjects from "./components/Desktop/Projects";
 import DesktopWalkthroughs from "./components/Desktop/Walkthroughs";
 import DesktopResources from "./components/Desktop/Resources";
 import DesktopContact from "./components/Desktop/Contact";
+import TrustedBrands from "./components/Desktop/TrustedBrands"; // ✅ instead of TrustedPartners
+
 
 // ===== Mobile components =====
 import MobileNavbar from "./components/Mobile/Navbar";
@@ -36,6 +38,7 @@ function DesktopHome() {
       <section id="about"><DesktopAbout /></section>
       <section id="projects"><DesktopProjects /></section>
       <section id="walkthroughs"><DesktopWalkthroughs /></section>
+      <section id="brands"><TrustedBrands /></section> {/* ✅ Added */}
       <section id="resources"><DesktopResources /></section>
       <section id="contact"><DesktopContact /></section>
       <DesktopFooter />
@@ -53,6 +56,7 @@ function MobileHome() {
       <section id="projects"><MobileProjects /></section>
       <section id="walkthroughs"><MobileWalkthroughs /></section>
       <section id="resources"><MobileResources /></section>
+      <section id="brands"><TrustedBrands /></section> {/* ✅ Added */}
       <section id="contact"><MobileContact /></section>
       <MobileFooter />
     </>

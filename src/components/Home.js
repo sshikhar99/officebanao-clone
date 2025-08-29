@@ -21,6 +21,9 @@ import MobileWalkthroughs from "./Mobile/Walkthroughs";
 import MobileResources from "./Mobile/Resources";
 import MobileContact from "./Mobile/Contact";
 
+// Shared Section
+import TrustedBrands from "./Desktop/TrustedBrands";
+
 function Home() {
   const isMobile = useDeviceType();
 
@@ -32,6 +35,7 @@ function Home() {
         <section id="about"><MobileAbout /></section>
         <section id="projects"><MobileProjects /></section>
         <section id="walkthroughs"><MobileWalkthroughs /></section>
+        <section id="brands"><TrustedBrands /></section>
         <section id="resources"><MobileResources /></section>
         <section id="contact"><MobileContact /></section>
         <MobileFooter />
@@ -46,6 +50,7 @@ function Home() {
       <section id="about"><DesktopAbout /></section>
       <section id="projects"><DesktopProjects /></section>
       <section id="walkthroughs"><DesktopWalkthroughs /></section>
+      <section id="brands"><TrustedBrands /></section>
       <section id="resources"><DesktopResources /></section>
       <section id="contact"><DesktopContact /></section>
       <DesktopFooter />

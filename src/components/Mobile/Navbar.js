@@ -9,7 +9,12 @@ export default function MobileNavbar() {
     setIsOpen(false); // close menu
 
     if (id === "blogs") {
-      navigate("/blogs"); // direct to blogs page
+      navigate("/blogs"); // ✅ go to blogs page
+      return;
+    }
+
+    if (id === "partner") {
+      navigate("/partner"); // ✅ go to partner page
       return;
     }
 
@@ -115,10 +120,11 @@ export default function MobileNavbar() {
         {[
           { id: "home", label: "Home" },
           { id: "about", label: "About" },
-          { id: "projects", label: "OurWork" },
+          { id: "projects", label: "Our Work" },
           { id: "walkthroughs", label: "Walkthroughs" },
           { id: "resources", label: "Resources" },
-          { id: "blogs", label: "📰 Blogs" }, // ✅ Added blogs
+          { id: "blogs", label: "Blogs" }, // ✅ Blogs
+          { id: "partner", label: "Become a Partner" }, // ✅ Partner
           { id: "contact", label: "Contact" },
         ].map((item) => (
           <div

@@ -5,11 +5,14 @@ import "./Navbar.css";
 const LINKS = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
-  { id: "projects", label: "Our Work", isPage: true }, // separate page
+  { id: "projects", label: "OurWork", isPage: true }, // separate page
   { id: "walkthroughs", label: "Walkthroughs" },
   { id: "resources", label: "Resources" },
-  { id: "blogs", label: "📰 Blogs", isPage: true }, // ✅ Added blogs
+  { id: "blogs", label: "Blogs", isPage: true }, // ✅ Blogs
+  { id: "partner", label: "Become a Partner", isPage: true }, // ✅ Partner
   { id: "contact", label: "Contact" },
+  
+
 ];
 
 export default function Navbar() {
@@ -21,6 +24,11 @@ export default function Navbar() {
 
     if (id === "blogs") {
       navigate("/blogs"); // ✅ go to blogs page
+      return;
+    }
+
+    if (id === "partner") {
+      navigate("/become-partner"); // ✅ go to partner page
       return;
     }
 

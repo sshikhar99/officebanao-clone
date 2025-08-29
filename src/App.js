@@ -14,7 +14,9 @@ import DesktopWalkthroughs from "./components/Desktop/Walkthroughs";
 import DesktopResources from "./components/Desktop/Resources";
 import DesktopContact from "./components/Desktop/Contact";
 import TrustedBrands from "./components/Desktop/TrustedBrands"; // ✅ instead of TrustedPartners
-import Blogs from "./pages/Blogs";
+import Blogs from "./pages/Blogs"
+import BecomePartner from "./pages/BecomePartner"
+;
 
 
 // ===== Mobile components =====
@@ -102,6 +104,7 @@ export default function App() {
         <Route path="/" element={isMobile ? <MobileHome /> : <DesktopHome />} />
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/blogs" element={<Blogs />} />
+        <Route path="/become-partner" element={<BecomePartner />} />
       </Routes>
     </>
   );

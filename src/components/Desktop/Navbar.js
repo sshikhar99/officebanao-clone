@@ -1,4 +1,3 @@
-// src/components/Navbar.js
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./Navbar.css";
@@ -9,6 +8,7 @@ const LINKS = [
   { id: "projects", label: "Projects", isPage: true }, // separate page
   { id: "walkthroughs", label: "Walkthroughs" },
   { id: "resources", label: "Resources" },
+  { id: "blogs", label: "📰 Blogs", isPage: true }, // ✅ Added blogs
   { id: "contact", label: "Contact" },
 ];
 
@@ -19,10 +19,14 @@ export default function Navbar() {
   const handleClick = (id, isPage) => (e) => {
     e.preventDefault();
 
+    if (id === "blogs") {
+      navigate("/blogs"); // ✅ go to blogs page
+      return;
+    }
+
     if (isPage) {
       // Always navigate to /projects
       if (location.pathname === "/projects") {
-        // already there → scroll to top
         window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
       } else {
         navigate("/projects");
@@ -30,12 +34,10 @@ export default function Navbar() {
       return;
     }
 
-    // For in-page sections (About, Walkthroughs, etc.)
+    // For in-page sections
     if (location.pathname !== "/") {
-      // coming from /projects (or anywhere else) → go home, then scroll
       navigate("/", { state: { scrollTo: id } });
     } else {
-      // Already on Home → just scroll
       const el = document.getElementById(id);
       if (el) {
         el.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -63,7 +65,7 @@ export default function Navbar() {
           {LINKS.map(({ id, label, isPage }) => (
             <a
               key={id}
-              href={isPage ? "/projects" : `/#${id}`}
+              href={isPage ? `/${id}` : `/#${id}`}
               onClick={handleClick(id, isPage)}
               className="ob-link"
             >

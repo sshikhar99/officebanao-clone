@@ -7,6 +7,12 @@ export default function MobileNavbar() {
 
   const handleNavClick = (id) => {
     setIsOpen(false); // close menu
+
+    if (id === "blogs") {
+      navigate("/blogs"); // direct to blogs page
+      return;
+    }
+
     navigate("/", { state: { scrollTo: id } }); // scroll to section
   };
 
@@ -112,6 +118,7 @@ export default function MobileNavbar() {
           { id: "projects", label: "Projects" },
           { id: "walkthroughs", label: "Walkthroughs" },
           { id: "resources", label: "Resources" },
+          { id: "blogs", label: "📰 Blogs" }, // ✅ Added blogs
           { id: "contact", label: "Contact" },
         ].map((item) => (
           <div

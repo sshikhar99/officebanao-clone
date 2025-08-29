@@ -1,27 +1,39 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
+// ✅ Import your images from src/assets
+import project1 from "../../assets/project1.webp";
+import project2 from "../../assets/project2.webp";
+import project3 from "../../assets/project3.webp";
+
 export default function Projects() {
   const location = useLocation();
 
   const projects = [
-    { id: 1, title: "Creative Studio", image: "..." },
-    { id: 2, title: "Minimalist Office", image: "..." },
-    // etc
+    { id: 1, title: "Creative Studio", image: project1 },
+    { id: 2, title: "Minimalist Office", image: project2 },
+    { id: 3, title: "Corporate Hub", image: project3 },
   ];
 
   return (
     <section id="projects" style={{ padding: "20px" }}>
       <h2 style={{ textAlign: "center", marginBottom: "20px" }}>Projects</h2>
 
-      <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+      {/* ✅ Grid layout for mobile, aligns images properly */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr",
+          gap: "16px",
+        }}
+      >
         {projects.map((p) => (
           <div
             key={p.id}
             style={{
               border: "1px solid #eee",
               borderRadius: "12px",
-              padding: "16px",
+              padding: "12px",
               background: "#fff",
               boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
               textAlign: "center",
@@ -32,11 +44,13 @@ export default function Projects() {
               alt={p.title}
               style={{
                 width: "100%",
+                height: "auto",
                 borderRadius: "8px",
                 marginBottom: "12px",
+                objectFit: "cover",
               }}
             />
-            <h3 style={{ margin: 0 }}>{p.title}</h3>
+            <h3 style={{ margin: 0, fontSize: "16px" }}>{p.title}</h3>
           </div>
         ))}
       </div>

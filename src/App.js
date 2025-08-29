@@ -55,8 +55,8 @@ function MobileHome() {
       <section id="about"><MobileAbout /></section>
       <section id="projects"><MobileProjects /></section>
       <section id="walkthroughs"><MobileWalkthroughs /></section>
-      <section id="resources"><MobileResources /></section>
       <section id="brands"><TrustedBrands /></section> {/* ✅ Added */}
+      <section id="resources"><MobileResources /></section>
       <section id="contact"><MobileContact /></section>
       <MobileFooter />
     </>

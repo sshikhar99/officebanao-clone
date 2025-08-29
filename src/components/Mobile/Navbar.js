@@ -115,7 +115,7 @@ export default function MobileNavbar() {
         {[
           { id: "home", label: "Home" },
           { id: "about", label: "About" },
-          { id: "projects", label: "Projects" },
+          { id: "projects", label: "OurWork" },
           { id: "walkthroughs", label: "Walkthroughs" },
           { id: "resources", label: "Resources" },
           { id: "blogs", label: "📰 Blogs" }, // ✅ Added blogs

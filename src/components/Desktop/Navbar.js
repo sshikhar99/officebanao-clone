@@ -5,7 +5,7 @@ import "./Navbar.css";
 const LINKS = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
-  { id: "projects", label: "Projects", isPage: true }, // separate page
+  { id: "projects", label: "Our Work", isPage: true }, // separate page
   { id: "walkthroughs", label: "Walkthroughs" },
   { id: "resources", label: "Resources" },
   { id: "blogs", label: "📰 Blogs", isPage: true }, // ✅ Added blogs

@@ -12,7 +12,7 @@ export default function MobileWalkthroughs() {
 
   return (
     <section style={{ padding: "20px", textAlign: "center" }}>
-      <h2 style={{ marginBottom: "15px" }}>Walkthroughs (Mobile)</h2>
+      <h2 style={{ marginBottom: "15px" }}>Walkthroughs </h2>
       <div style={{ display: "grid", gap: "15px" }}>
         {walkthroughs.map((w) => (
           <div

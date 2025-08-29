@@ -9,17 +9,28 @@ export default function MobileNavbar() {
     setIsOpen(false); // close menu
 
     if (id === "blogs") {
-      navigate("/blogs"); // ✅ go to blogs page
+      navigate("/blogs");
       return;
     }
 
     if (id === "partner") {
-      navigate("/partner"); // ✅ go to partner page
+      navigate("/become-partner"); // ✅ Correct path
       return;
     }
 
-    navigate("/", { state: { scrollTo: id } }); // scroll to section
+    navigate("/", { state: { scrollTo: id } });
   };
+
+  const navItems = [
+    { id: "home", label: "Home" },
+    { id: "about", label: "About" },
+    { id: "projects", label: "Our Work" },
+    { id: "walkthroughs", label: "Walkthroughs" },
+    { id: "resources", label: "Resources" },
+    { id: "blogs", label: "Blogs" },
+    { id: "partner", label: "Become a Partner" },
+    { id: "contact", label: "Contact" },
+  ];
 
   return (
     <nav
@@ -104,6 +115,7 @@ export default function MobileNavbar() {
           paddingTop: "60px",
         }}
       >
+        {/* Close Button */}
         <div
           style={{
             position: "absolute",
@@ -117,16 +129,8 @@ export default function MobileNavbar() {
           ✕
         </div>
 
-        {[
-          { id: "home", label: "Home" },
-          { id: "about", label: "About" },
-          { id: "projects", label: "Our Work" },
-          { id: "walkthroughs", label: "Walkthroughs" },
-          { id: "resources", label: "Resources" },
-          { id: "blogs", label: "Blogs" }, // ✅ Blogs
-          { id: "partner", label: "Become a Partner" }, // ✅ Partner
-          { id: "contact", label: "Contact" },
-        ].map((item) => (
+        {/* Nav Links */}
+        {navItems.map((item) => (
           <div
             key={item.id}
             onClick={() => handleNavClick(item.id)}

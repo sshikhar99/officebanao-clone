@@ -1,32 +1,62 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function MobileNavbar() {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const handleNavClick = (id) => {
+  const handleNavClick = (id, special, isPage) => {
     setIsOpen(false); // close menu
 
+    // Blogs
     if (id === "blogs") {
       navigate("/blogs");
       return;
     }
 
+    // Partner
     if (id === "partner") {
-      navigate("/become-partner"); // ✅ Correct path
+      navigate("/become-partner");
       return;
     }
 
-    navigate("/", { state: { scrollTo: id } });
+    // Projects page
+    if (id === "projects" || isPage) {
+      navigate("/projects");
+      return;
+    }
+
+    // Special items (About, Walkthroughs, Resources)
+    if (special) {
+      if (location.pathname === "/") {
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      } else {
+        navigate(`/${id}`);
+      }
+      return;
+    }
+
+    // Default → scroll on home
+    if (location.pathname !== "/") {
+      navigate("/", { state: { scrollTo: id } });
+    } else {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
   };
 
   const navItems = [
     { id: "home", label: "Home" },
-    { id: "about", label: "About" },
-    { id: "projects", label: "Our Work" },
-    { id: "walkthroughs", label: "Walkthroughs" },
-    { id: "resources", label: "Resources" },
+    { id: "about", label: "About", special: true },
+    { id: "projects", label: "Our Work", isPage: true },
+    { id: "walkthroughs", label: "Walkthroughs", special: true },
+    { id: "resources", label: "Resources", special: true },
     { id: "blogs", label: "Blogs" },
     { id: "partner", label: "Become a Partner" },
     { id: "contact", label: "Contact" },
@@ -133,7 +163,7 @@ export default function MobileNavbar() {
         {navItems.map((item) => (
           <div
             key={item.id}
-            onClick={() => handleNavClick(item.id)}
+            onClick={() => handleNavClick(item.id, item.special, item.isPage)}
             style={{
               padding: "16px 20px",
               borderBottom: "1px solid #333",

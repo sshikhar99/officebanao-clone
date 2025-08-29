@@ -34,7 +34,7 @@ export default function Blogs() {
         color: "#222",
       }}
     >
-      <h1 style={{ fontSize: "32px", marginBottom: "20px" }}>📰 Blogs</h1>
+      <h1 style={{ fontSize: "32px", marginBottom: "20px" }}>Blogs</h1>
       <p style={{ fontSize: "16px", marginBottom: "30px", color: "#555" }}>
         Explore our latest articles, tips, and insights on office design and
         workspace innovation.
@@ -52,13 +52,19 @@ export default function Blogs() {
               boxShadow: "0 2px 5px rgba(0,0,0,0.05)",
               transition: "transform 0.2s ease",
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.02)")}
-            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.transform = "scale(1.02)")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.transform = "scale(1)")
+            }
           >
             <h2 style={{ fontSize: "22px", marginBottom: "8px" }}>
               {post.title}
             </h2>
-            <p style={{ fontSize: "14px", color: "#777", marginBottom: "12px" }}>
+            <p
+              style={{ fontSize: "14px", color: "#777", marginBottom: "12px" }}
+            >
               {post.date}
             </p>
             <p style={{ fontSize: "16px", marginBottom: "15px" }}>

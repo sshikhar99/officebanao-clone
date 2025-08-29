@@ -1,8 +1,9 @@
 import React from "react";
 import { FaUsers } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import "./About.css";
 
-const About = () => {
+const HomeAbout = () => {
   return (
     <section className="about" id="about">
       <div className="about-icon">
@@ -10,17 +11,15 @@ const About = () => {
       </div>
       <h2>About Us</h2>
       <p>
-        At <b>OfficeBanao.in</b>, we create world-class office interiors tailored
-        to your business needs. From startups to enterprises, we bring{" "}
-        <b>innovative design</b> and <b>functionality</b> together to transform
-        workspaces into inspiring environments.
+        At <b>OfficeBanao.in</b>, we design world-class office interiors for startups and enterprises.
+        We blend <b>innovation</b> and <b>functionality</b> to transform workspaces.
       </p>
+
+      <Link to="/about" className="see-more-btn">
+        See More →
+      </Link>
     </section>
   );
 };
 
-export default About;
-
-
-
-
+export default HomeAbout;

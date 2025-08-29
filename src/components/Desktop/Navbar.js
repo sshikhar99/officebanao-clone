@@ -4,36 +4,36 @@ import "./Navbar.css";
 
 const LINKS = [
   { id: "home", label: "Home" },
-  { id: "about", label: "About" },
-  { id: "projects", label: "OurWork", isPage: true }, // separate page
-  { id: "walkthroughs", label: "Walkthroughs" },
-  { id: "resources", label: "Resources" },
-  { id: "blogs", label: "Blogs", isPage: true }, // ✅ Blogs
-  { id: "partner", label: "Become a Partner", isPage: true }, // ✅ Partner
+  { id: "about", label: "About", special: true },          // ✅ scroll OR page
+  { id: "projects", label: "OurWork", isPage: true },      // separate page
+  { id: "walkthroughs", label: "Walkthroughs", special: true }, // ✅ scroll OR page
+  { id: "resources", label: "Resources", special: true },  // ✅ scroll OR page
+  { id: "blogs", label: "Blogs", isPage: true },
+  { id: "partner", label: "Become a Partner", isPage: true },
   { id: "contact", label: "Contact" },
-  
-
 ];
 
 export default function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handleClick = (id, isPage) => (e) => {
+  const handleClick = (id, isPage, special) => (e) => {
     e.preventDefault();
 
+    // Blogs
     if (id === "blogs") {
-      navigate("/blogs"); // ✅ go to blogs page
+      navigate("/blogs");
       return;
     }
 
+    // Partner
     if (id === "partner") {
-      navigate("/become-partner"); // ✅ go to partner page
+      navigate("/become-partner");
       return;
     }
 
+    // Projects
     if (isPage) {
-      // Always navigate to /projects
       if (location.pathname === "/projects") {
         window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
       } else {
@@ -42,7 +42,22 @@ export default function Navbar() {
       return;
     }
 
-    // For in-page sections
+    // About / Walkthroughs / Resources special behavior
+    if (special) {
+      if (location.pathname === "/") {
+        // Already on home → scroll to section
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      } else {
+        // On other page → navigate to dedicated page
+        navigate(`/${id}`);
+      }
+      return;
+    }
+
+    // Default in-page section scroll
     if (location.pathname !== "/") {
       navigate("/", { state: { scrollTo: id } });
     } else {
@@ -70,11 +85,11 @@ export default function Navbar() {
 
         {/* Links */}
         <nav className="ob-nav">
-          {LINKS.map(({ id, label, isPage }) => (
+          {LINKS.map(({ id, label, isPage, special }) => (
             <a
               key={id}
               href={isPage ? `/${id}` : `/#${id}`}
-              onClick={handleClick(id, isPage)}
+              onClick={handleClick(id, isPage, special)}
               className="ob-link"
             >
               {label}

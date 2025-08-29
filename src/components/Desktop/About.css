@@ -1,9 +1,22 @@
+/* Wrapper for when About is used as a full page */
+.about-page {
+  padding: 100px 20px;
+  display: flex;
+  justify-content: center;
+  background: #fff;
+}
+
+/* Section itself */
 .about {
-  padding: 80px 20px;   /* reduced padding so it's not too far */
+  padding: 80px 20px;   /* space for in-page use */
   text-align: center;
   background: #f9f9f9;
   color: #333;
-  scroll-margin-top: 100px;  /* ensures navbar doesn't cover it */
+  scroll-margin-top: 100px;  /* ensures navbar doesn’t overlap */
+  border-radius: 12px;
+  max-width: 900px;
+  margin: 0 auto;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
 .about-icon {

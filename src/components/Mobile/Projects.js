@@ -28,30 +28,38 @@ export default function Projects() {
         }}
       >
         {projects.map((p) => (
-          <div
+          <Link
             key={p.id}
-            style={{
-              border: "1px solid #eee",
-              borderRadius: "12px",
-              padding: "12px",
-              background: "#fff",
-              boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
-              textAlign: "center",
-            }}
+            to={`/projects/${p.id}`} // ✅ dynamic detail page
+            style={{ textDecoration: "none", color: "inherit" }}
           >
-            <img
-              src={p.image}
-              alt={p.title}
+            <div
               style={{
-                width: "100%",
-                height: "auto",
-                borderRadius: "8px",
-                marginBottom: "12px",
-                objectFit: "cover",
+                border: "1px solid #eee",
+                borderRadius: "12px",
+                padding: "12px",
+                background: "#fff",
+                boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
+                textAlign: "center",
+                transition: "transform 0.2s ease",
               }}
-            />
-            <h3 style={{ margin: 0, fontSize: "16px" }}>{p.title}</h3>
-          </div>
+              onMouseOver={(e) => (e.currentTarget.style.transform = "scale(1.02)")}
+              onMouseOut={(e) => (e.currentTarget.style.transform = "scale(1)")}
+            >
+              <img
+                src={p.image}
+                alt={p.title}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  borderRadius: "8px",
+                  marginBottom: "12px",
+                  objectFit: "cover",
+                }}
+              />
+              <h3 style={{ margin: 0, fontSize: "16px" }}>{p.title}</h3>
+            </div>
+          </Link>
         ))}
       </div>
 

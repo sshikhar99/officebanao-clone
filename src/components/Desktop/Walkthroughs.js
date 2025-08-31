@@ -1,5 +1,6 @@
 import React from "react";
 import Slider from "react-slick";
+import { Link } from "react-router-dom"; // ✅ for navigation
 
 // slick CSS
 import "slick-carousel/slick/slick.css";
@@ -43,6 +44,13 @@ function Walkthroughs() {
           <img src={project3} alt="Project 3 walkthrough" className="walkthrough-img" />
         </div>
       </Slider>
+
+      {/* ✅ View More button */}
+      <div className="walkthroughs-btn-wrap">
+        <Link to="/walkthroughs" className="view-more-btn">
+          View More Walkthroughs →
+        </Link>
+      </div>
     </div>
   );
 }

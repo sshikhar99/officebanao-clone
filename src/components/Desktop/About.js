@@ -15,6 +15,7 @@ const HomeAbout = () => {
         We blend <b>innovation</b> and <b>functionality</b> to transform workspaces.
       </p>
 
+      {/* ✅ Styled button via CSS */}
       <Link to="/about" className="see-more-btn">
         See More →
       </Link>

@@ -11,6 +11,8 @@ import ProjectsPage from "./pages/ProjectsPage";
 import About from "./pages/About";              // ✅ New
 import Walkthroughs from "./pages/Walkthroughs"; // ✅ New
 import Resources from "./pages/Resources";      // ✅ New
+import WalkthroughDetails from "./pages/WalkthroughDetails";
+import ProjectDetail from "./pages/ProjectDetail"; // ✅ import
 
 // Layout
 import Layout from "./Layout/Layout";
@@ -157,7 +159,10 @@ export default function App() {
             </Layout>
           }
         />
+        <Route path="/walkthroughs/:id" element={<WalkthroughDetails />} />
+        <Route path="/projects/:id" element={<ProjectDetail />} /> {/* ✅ new */}
       </Routes>
+      
     </>
   );
 }

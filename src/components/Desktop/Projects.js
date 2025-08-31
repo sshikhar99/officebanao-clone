@@ -1,30 +1,43 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom"; 
 import "./Projects.css";
 import project1 from "../../assets/project1.webp";
 import project2 from "../../assets/project2.webp";
 import project3 from "../../assets/project3.webp";
 
 function Projects() {
-  const images = [project1, project2, project3];
+  const location = useLocation(); 
+
+  const projects = [
+    { id: 1, img: project1, title: "Modern Workspace" },
+    { id: 2, img: project2, title: "Creative Studio" },
+    { id: 3, img: project3, title: "Corporate Office" },
+  ];
 
   return (
     <section id="portfolio" className="projects">
       <h2>Our Projects</h2>
       <div className="projects-gallery">
-        {images.map((img, index) => (
-          <div key={index} className="project-card">
-            <img src={img} alt={`Project ${index + 1}`} />
-          </div>
+        {projects.map((project) => (
+          <Link
+            key={project.id}
+            to={`/projects/${project.id}`}   // ✅ dynamic link
+            className="project-card"
+          >
+            <img src={project.img} alt={project.title} />
+            <h3>{project.title}</h3>
+          </Link>
         ))}
       </div>
 
-      {/* View More Button */}
-      <div className="view-more-container">
-        <Link to="/projects" className="view-more-btn">
-          View More →
-        </Link>
-      </div>
+      {/* ✅ Show "View More" only on homepage */}
+      {location.pathname === "/" && (
+        <div className="view-more-container">
+          <Link to="/projects" className="view-more-btn">
+            View More →
+          </Link>
+        </div>
+      )}
     </section>
   );
 }

@@ -10,21 +10,18 @@ export default function MobileResources({ isPage = false }) {
       id: 1,
       title: "Office Design Handbook",
       description: "A complete guide to creating functional, modern workspaces.",
-      link: "#",
       icon: <FaBookOpen />,
     },
     {
       id: 2,
       title: "Cost Optimization Tips",
       description: "Learn how to design premium interiors while saving money.",
-      link: "#",
       icon: <FaLightbulb />,
     },
     {
       id: 3,
       title: "Case Studies",
       description: "Explore how we transformed client spaces with smart designs.",
-      link: "#",
       icon: <FaBuilding />,
     },
   ];
@@ -121,18 +118,20 @@ export default function MobileResources({ isPage = false }) {
               {resource.description}
             </p>
 
-            {/* Link */}
-            <a
-              href={resource.link}
+            {/* ✅ Learn More (navigates to detail page) */}
+            <button
+              onClick={() => navigate(`/resources/${resource.id}`)}
               style={{
                 fontSize: "14px",
                 fontWeight: "600",
                 color: "#00bfa6",
-                textDecoration: "none",
+                background: "transparent",
+                border: "none",
+                cursor: "pointer",
               }}
             >
               Learn More →
-            </a>
+            </button>
           </div>
         ))}
       </div>

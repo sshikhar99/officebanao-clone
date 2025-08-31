@@ -14,6 +14,8 @@ import Resources from "./pages/Resources";      // ✅ New
 import WalkthroughDetails from "./pages/WalkthroughDetails";
 import ProjectDetail from "./pages/ProjectDetail"; // ✅ import
 import BlogDetail from "./pages/BlogDetail"; // adjust path if needed
+import ResourceDetail from "./pages/ResourceDetail";
+import AllResources from "./pages/AllResources";
 
 // Layout
 import Layout from "./Layout/Layout";
@@ -168,7 +170,13 @@ export default function App() {
         element={<ProjectDetail />} 
         /> 
         <Route path="/blogs/:id" element={<BlogDetail />} /> {/* ✅ new route */}
+
+        <Route path="/resources/:id" element={<ResourceDetail />} />
+
+        <Route path="/resources/all" element={<AllResources />} />
+
       </Routes>
+
       
     </>
   );

@@ -34,3 +34,23 @@
   height: 220px;
   object-fit: cover;
 }
+
+.view-more-container {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.view-more-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #00bcd4;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.view-more-btn:hover {
+  background: #0097a7;
+}

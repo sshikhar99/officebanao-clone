@@ -19,7 +19,7 @@ export default function Projects() {
     <section id="projects" style={{ padding: "20px" }}>
       <h2 style={{ textAlign: "center", marginBottom: "20px" }}>Projects</h2>
 
-      {/* ✅ Grid layout for mobile, aligns images properly */}
+      {/* ✅ Grid layout for mobile */}
       <div
         style={{
           display: "grid",
@@ -58,18 +58,22 @@ export default function Projects() {
       {/* ✅ Show button ONLY on homepage */}
       {location.pathname === "/" && (
         <div style={{ textAlign: "center", marginTop: "20px" }}>
-          <Link to="/projects">
+          <Link to="/ourwork">
             <button
               style={{
                 padding: "10px 20px",
-                background: "#007bff",
+                background: "#00bcd4",
                 color: "#fff",
+                fontWeight: "bold",
                 border: "none",
                 borderRadius: "8px",
                 cursor: "pointer",
+                transition: "background 0.3s ease",
               }}
+              onMouseOver={(e) => (e.target.style.background = "#0097a7")}
+              onMouseOut={(e) => (e.target.style.background = "#00bcd4")}
             >
-              View All Projects
+              View More →
             </button>
           </Link>
         </div>

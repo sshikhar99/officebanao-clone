@@ -6,9 +6,9 @@ import { Link } from "react-router-dom";
 
 export default function MobileWalkthroughs({ isPage = false }) {
   const walkthroughs = [
-    { id: 1, title: "3D Office Tour", img: project1 },
-    { id: 2, title: "Furniture Showcase", img: project2 },
-    { id: 3, title: "Virtual Workspace", img: project3 },
+    { id: 1, title: "Tech Startup HQ", img: project1 },
+    { id: 2, title: "Corporate HQ Redesign", img: project2 },
+    { id: 3, title: "Creative Studio", img: project3 },
   ];
 
   // show only first 2 if not on the dedicated page

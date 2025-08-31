@@ -58,7 +58,7 @@ export default function Projects() {
       {/* ✅ Show button ONLY on homepage */}
       {location.pathname === "/" && (
         <div style={{ textAlign: "center", marginTop: "20px" }}>
-          <Link to="/ourwork">
+          <Link to="/projects">
             <button
               style={{
                 padding: "10px 20px",

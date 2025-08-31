@@ -13,6 +13,7 @@ import Walkthroughs from "./pages/Walkthroughs"; // ✅ New
 import Resources from "./pages/Resources";      // ✅ New
 import WalkthroughDetails from "./pages/WalkthroughDetails";
 import ProjectDetail from "./pages/ProjectDetail"; // ✅ import
+import BlogDetail from "./pages/BlogDetail"; // adjust path if needed
 
 // Layout
 import Layout from "./Layout/Layout";
@@ -159,8 +160,14 @@ export default function App() {
             </Layout>
           }
         />
-        <Route path="/walkthroughs/:id" element={<WalkthroughDetails />} />
-        <Route path="/projects/:id" element={<ProjectDetail />} /> {/* ✅ new */}
+        <Route
+         path="/walkthroughs/:id" 
+         element={<WalkthroughDetails />}
+        />
+        <Route path="/projects/:id" 
+        element={<ProjectDetail />} 
+        /> 
+        <Route path="/blogs/:id" element={<BlogDetail />} /> {/* ✅ new route */}
       </Routes>
       
     </>

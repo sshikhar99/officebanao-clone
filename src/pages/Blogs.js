@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Blogs() {
   const blogPosts = [
@@ -70,8 +71,10 @@ export default function Blogs() {
             <p style={{ fontSize: "16px", marginBottom: "15px" }}>
               {post.excerpt}
             </p>
-            <a
-              href="#"
+
+            {/* ✅ Link to dynamic blog detail */}
+            <Link
+              to={`/blogs/${post.id}`}
               style={{
                 fontSize: "14px",
                 fontWeight: "600",
@@ -80,7 +83,7 @@ export default function Blogs() {
               }}
             >
               Read More →
-            </a>
+            </Link>
           </div>
         ))}
       </div>

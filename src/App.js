@@ -35,7 +35,7 @@ import MobileAbout from "./components/Mobile/About";
 import MobileProjects from "./components/Mobile/Projects";
 import MobileWalkthroughs from "./components/Mobile/Walkthroughs"; 
 import MobileResources from "./components/Mobile/Resources";  
-
+import MobileContact from "./components/Mobile/Contact"
 // ===== Desktop Home Component =====
 function DesktopHome() {
   return (
@@ -62,7 +62,7 @@ function MobileHome() {
       <section id="brands"><TrustedBrands /></section>
       <section id="resources"><MobileResources /></section>
       {/* ✅ Reuse DesktopContact for form on mobile */}
-      <section id="contact"><DesktopContact /></section>
+      <section id="contact"><MobileContact /></section>
     </>
   );
 }

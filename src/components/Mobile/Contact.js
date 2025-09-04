@@ -6,8 +6,13 @@ export default function MobileContact() {
   const [message, setMessage] = useState("");
 
   const openWhatsApp = () => {
+    if (!name || !email || !message) {
+      alert("Please fill all fields before sending.");
+      return;
+    }
+
     const phoneNumber = "917683061117"; // your WhatsApp number
-    const text = `New Inquiry from OfficeBanao\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}`;
+    const text = `📩 New Inquiry from OfficeBanao\n\n👤 Name: ${name}\n📧 Email: ${email}\n💬 Message: ${message}`;
 
     window.open(
       `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`,
@@ -22,16 +27,16 @@ export default function MobileContact() {
 
   return (
     <section style={{ padding: "20px", textAlign: "center" }}>
-      <h2>Contact Us</h2>
-      <p>Email: support@officebanao.com</p>
-      <p>Phone: +91-7683061117</p>
+      <h2 style={{ marginBottom: "10px" }}>Contact Us</h2>
+      <p style={{ margin: "4px 0" }}>Email: support@officebanao.com</p>
+      <p style={{ margin: "4px 0" }}>Phone: +91-7683061117</p>
 
       <div
         style={{
           display: "flex",
           flexDirection: "column",
-          gap: "10px",
-          marginTop: "15px",
+          gap: "12px",
+          marginTop: "20px",
         }}
       >
         <input
@@ -40,7 +45,12 @@ export default function MobileContact() {
           required
           value={name}
           onChange={(e) => setName(e.target.value)}
-          style={{ padding: "8px", borderRadius: "6px", border: "1px solid #ccc" }}
+          style={{
+            padding: "12px",
+            borderRadius: "8px",
+            border: "1px solid #ccc",
+            fontSize: "16px",
+          }}
         />
         <input
           type="email"
@@ -48,28 +58,42 @@ export default function MobileContact() {
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          style={{ padding: "8px", borderRadius: "6px", border: "1px solid #ccc" }}
+          style={{
+            padding: "12px",
+            borderRadius: "8px",
+            border: "1px solid #ccc",
+            fontSize: "16px",
+          }}
         />
         <textarea
           placeholder="Your Message"
           required
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          style={{ padding: "8px", borderRadius: "6px", border: "1px solid #ccc" }}
+          rows={4}
+          style={{
+            padding: "12px",
+            borderRadius: "8px",
+            border: "1px solid #ccc",
+            fontSize: "16px",
+            resize: "none",
+          }}
         ></textarea>
 
         <button
           onClick={openWhatsApp}
           style={{
-            padding: "10px 20px",
+            padding: "14px",
             background: "#25D366",
             color: "#fff",
+            fontSize: "16px",
+            fontWeight: "bold",
             border: "none",
-            borderRadius: "6px",
+            borderRadius: "8px",
             cursor: "pointer",
           }}
         >
-          💬 Send Message
+          💬 Send Message on WhatsApp
         </button>
       </div>
     </section>

@@ -15,7 +15,7 @@ export default function MobileContact() {
       "_blank"
     );
 
-    // reset form
+    // reset
     setName("");
     setEmail("");
     setMessage("");
@@ -27,7 +27,11 @@ export default function MobileContact() {
       <p>Email: support@officebanao.com</p>
       <p>Phone: +91-7683061117</p>
 
-      <div
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          openWhatsApp();
+        }}
         style={{
           display: "flex",
           flexDirection: "column",
@@ -76,7 +80,7 @@ export default function MobileContact() {
         ></textarea>
 
         <button
-          onClick={openWhatsApp}
+          type="submit"
           style={{
             padding: "12px",
             background: "#25D366",
@@ -90,7 +94,7 @@ export default function MobileContact() {
         >
           💬 Send Message
         </button>
-      </div>
+      </form>
     </section>
   );
 }

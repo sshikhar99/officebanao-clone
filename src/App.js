@@ -8,33 +8,34 @@ import useDeviceType from "./hooks/useDeviceType";
 import Blogs from "./pages/Blogs";
 import BecomePartner from "./pages/BecomePartner";
 import ProjectsPage from "./pages/ProjectsPage";
-import About from "./pages/About";              
-import Walkthroughs from "./pages/Walkthroughs"; 
-import Resources from "./pages/Resources";      
+import About from "./pages/About";              // ✅ New
+import Walkthroughs from "./pages/Walkthroughs"; // ✅ New
+import Resources from "./pages/Resources";      // ✅ New
 import WalkthroughDetails from "./pages/WalkthroughDetails";
-import ProjectDetail from "./pages/ProjectDetail"; 
-import BlogDetail from "./pages/BlogDetail"; 
+import ProjectDetail from "./pages/ProjectDetail"; // ✅ import
+import BlogDetail from "./pages/BlogDetail"; // adjust path if needed
 import ResourceDetail from "./pages/ResourceDetail";
 import AllResources from "./pages/AllResources";
 
 // Layout
 import Layout from "./Layout/Layout";
 
-// ===== Desktop Components =====
+// ===== Desktop Home =====
 import DesktopHero from "./components/Desktop/HeroSection";
-import DesktopAbout from "./components/Desktop/About";         
+import DesktopAbout from "./components/Desktop/About";         // (Preview)
 import DesktopProjects from "./components/Desktop/Projects";
-import DesktopWalkthroughs from "./components/Desktop/Walkthroughs"; 
-import DesktopResources from "./components/Desktop/Resources"; 
-import DesktopContact from "./components/Desktop/Contact";   // ✅ reuse this
+import DesktopWalkthroughs from "./components/Desktop/Walkthroughs"; // (Preview)
+import DesktopResources from "./components/Desktop/Resources"; // (Preview)
+import DesktopContact from "./components/Desktop/Contact";
 import TrustedBrands from "./components/Desktop/TrustedBrands";
 
-// ===== Mobile Components =====
+// ===== Mobile Home =====
 import MobileHero from "./components/Mobile/HeroSection";
-import MobileAbout from "./components/Mobile/About";          
+import MobileAbout from "./components/Mobile/About";          // (Preview)
 import MobileProjects from "./components/Mobile/Projects";
-import MobileWalkthroughs from "./components/Mobile/Walkthroughs"; 
-import MobileResources from "./components/Mobile/Resources";  
+import MobileWalkthroughs from "./components/Mobile/Walkthroughs"; // (Preview)
+import MobileResources from "./components/Mobile/Resources";  // (Preview)
+import MobileContact from "./components/Mobile/Contact";
 
 // ===== Desktop Home Component =====
 function DesktopHome() {
@@ -61,8 +62,7 @@ function MobileHome() {
       <section id="walkthroughs"><MobileWalkthroughs /></section>
       <section id="brands"><TrustedBrands /></section>
       <section id="resources"><MobileResources /></section>
-      {/* ✅ Reuse DesktopContact for form on mobile */}
-      <section id="contact"><DesktopContact /></section>
+      <section id="contact"><MobileContact /></section>
     </>
   );
 }
@@ -162,12 +162,22 @@ export default function App() {
             </Layout>
           }
         />
-        <Route path="/walkthroughs/:id" element={<WalkthroughDetails />} />
-        <Route path="/projects/:id" element={<ProjectDetail />} /> 
-        <Route path="/blogs/:id" element={<BlogDetail />} /> 
+        <Route
+         path="/walkthroughs/:id" 
+         element={<WalkthroughDetails />}
+        />
+        <Route path="/projects/:id" 
+        element={<ProjectDetail />} 
+        /> 
+        <Route path="/blogs/:id" element={<BlogDetail />} /> {/* ✅ new route */}
+
         <Route path="/resources/:id" element={<ResourceDetail />} />
+
         <Route path="/resources/all" element={<AllResources />} />
+
       </Routes>
+
+      
     </>
   );
 }

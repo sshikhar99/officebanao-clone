@@ -9,7 +9,7 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const phoneNumber = "917683061117"; // your WhatsApp number in intl format
+    const phoneNumber = "917683061117"; // your WhatsApp number
     const text = `New Inquiry from OfficeBanao\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}`;
 
     // open WhatsApp with prefilled message
@@ -17,6 +17,11 @@ const Contact = () => {
       `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`,
       "_blank"
     );
+
+    // reset form
+    setName("");
+    setEmail("");
+    setMessage("");
   };
 
   return (

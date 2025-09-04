@@ -6,13 +6,18 @@ export default function MobileContact() {
   const [message, setMessage] = useState("");
 
   const openWhatsApp = () => {
-    const phoneNumber = "917683061117"; // your WhatsApp number in intl format
+    const phoneNumber = "917683061117"; // your WhatsApp number
     const text = `New Inquiry from OfficeBanao\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}`;
 
     window.open(
       `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`,
       "_blank"
     );
+
+    // reset form
+    setName("");
+    setEmail("");
+    setMessage("");
   };
 
   return (
@@ -21,7 +26,14 @@ export default function MobileContact() {
       <p>Email: support@officebanao.com</p>
       <p>Phone: +91-7683061117</p>
 
-      <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginTop: "15px" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "10px",
+          marginTop: "15px",
+        }}
+      >
         <input
           type="text"
           placeholder="Your Name"

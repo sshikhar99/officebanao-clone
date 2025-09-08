@@ -8,33 +8,34 @@ import useDeviceType from "./hooks/useDeviceType";
 import Blogs from "./pages/Blogs";
 import BecomePartner from "./pages/BecomePartner";
 import ProjectsPage from "./pages/ProjectsPage";
-import About from "./pages/About";              // ✅ New
-import Walkthroughs from "./pages/Walkthroughs"; // ✅ New
-import Resources from "./pages/Resources";      // ✅ New
+import About from "./pages/About";
+import Walkthroughs from "./pages/Walkthroughs";
+import Resources from "./pages/Resources";
 import WalkthroughDetails from "./pages/WalkthroughDetails";
-import ProjectDetail from "./pages/ProjectDetail"; // ✅ import
-import BlogDetail from "./pages/BlogDetail"; // adjust path if needed
+import ProjectDetail from "./pages/ProjectDetail";
+import BlogDetail from "./pages/BlogDetail";
 import ResourceDetail from "./pages/ResourceDetail";
 import AllResources from "./pages/AllResources";
+
 
 // Layout
 import Layout from "./Layout/Layout";
 
 // ===== Desktop Home =====
 import DesktopHero from "./components/Desktop/HeroSection";
-import DesktopAbout from "./components/Desktop/About";         // (Preview)
+import DesktopAbout from "./components/Desktop/About";
 import DesktopProjects from "./components/Desktop/Projects";
-import DesktopWalkthroughs from "./components/Desktop/Walkthroughs"; // (Preview)
-import DesktopResources from "./components/Desktop/Resources"; // (Preview)
+import DesktopWalkthroughs from "./components/Desktop/Walkthroughs";
+import DesktopResources from "./components/Desktop/Resources";
 import DesktopContact from "./components/Desktop/Contact";
 import TrustedBrands from "./components/Desktop/TrustedBrands";
 
 // ===== Mobile Home =====
 import MobileHero from "./components/Mobile/HeroSection";
-import MobileAbout from "./components/Mobile/About";          // (Preview)
+import MobileAbout from "./components/Mobile/About";
 import MobileProjects from "./components/Mobile/Projects";
-import MobileWalkthroughs from "./components/Mobile/Walkthroughs"; // (Preview)
-import MobileResources from "./components/Mobile/Resources";  // (Preview)
+import MobileWalkthroughs from "./components/Mobile/Walkthroughs";
+import MobileResources from "./components/Mobile/Resources";
 import MobileContact from "./components/Mobile/Contact";
 
 // ===== Desktop Home Component =====
@@ -112,72 +113,22 @@ export default function App() {
         />
 
         {/* Internal Pages */}
-        <Route
-          path="/projects"
-          element={
-            <Layout>
-              <ProjectsPage />
-            </Layout>
-          }
-        />
-        <Route
-          path="/blogs"
-          element={
-            <Layout>
-              <Blogs />
-            </Layout>
-          }
-        />
-        <Route
-          path="/become-partner"
-          element={
-            <Layout>
-              <BecomePartner />
-            </Layout>
-          }
-        />
+        <Route path="/projects" element={<Layout><ProjectsPage /></Layout>} />
+        <Route path="/blogs" element={<Layout><Blogs /></Layout>} />
+        <Route path="/become-partner" element={<Layout><BecomePartner /></Layout>} />
+        <Route path="/about" element={<Layout><About /></Layout>} />
+        <Route path="/walkthroughs" element={<Layout><Walkthroughs /></Layout>} />
+        <Route path="/resources" element={<Layout><Resources /></Layout>} />
 
-        {/* New Pages */}
-        <Route
-          path="/about"
-          element={
-            <Layout>
-              <About />
-            </Layout>
-          }
-        />
-        <Route
-          path="/walkthroughs"
-          element={
-            <Layout>
-              <Walkthroughs />
-            </Layout>
-          }
-        />
-        <Route
-          path="/resources"
-          element={
-            <Layout>
-              <Resources />
-            </Layout>
-          }
-        />
-        <Route
-         path="/walkthroughs/:id" 
-         element={<WalkthroughDetails />}
-        />
-        <Route path="/projects/:id" 
-        element={<ProjectDetail />} 
-        /> 
-        <Route path="/blogs/:id" element={<BlogDetail />} /> {/* ✅ new route */}
-
+        {/* Details Pages */}
+        <Route path="/walkthroughs/:id" element={<WalkthroughDetails />} />
+        <Route path="/projects/:id" element={<ProjectDetail />} />
+        <Route path="/blogs/:id" element={<BlogDetail />} />
         <Route path="/resources/:id" element={<ResourceDetail />} />
-
         <Route path="/resources/all" element={<AllResources />} />
 
+        
       </Routes>
-
-      
     </>
   );
 }

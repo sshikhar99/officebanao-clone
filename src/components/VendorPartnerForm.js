@@ -17,18 +17,34 @@ export default function VendorPartnerForm() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Vendor Partner Data Submitted:", formData);
-    setSuccessMsg("Your Vendor Partner form has been submitted successfully!");
-    setFormData({
-      companyName: "",
-      contactPerson: "",
-      email: "",
-      phone: "",
-      services: "",
-      location: "",
-    });
+
+    try {
+      const res = await fetch("http://localhost:5000/api/vendors", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (res.ok) {
+        setSuccessMsg("✅ Your Vendor Partner form has been submitted successfully!");
+        setFormData({
+          companyName: "",
+          contactPerson: "",
+          email: "",
+          phone: "",
+          services: "",
+          location: "",
+        });
+      } else {
+        const errData = await res.json();
+        setSuccessMsg(`❌ Failed: ${errData.error || "Please try again."}`);
+      }
+    } catch (err) {
+      console.error("Error submitting Vendor Partner form:", err);
+      setSuccessMsg("⚠️ Server error. Please try again later.");
+    }
   };
 
   const inputStyle = {

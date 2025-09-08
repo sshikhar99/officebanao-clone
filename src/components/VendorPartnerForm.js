@@ -27,10 +27,11 @@ export default function VendorPartnerForm() {
 
     try {
       const res = await fetch(`${API_BASE}/api/vendors`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(formData),
+});
+
 
       if (!res.ok) {
         // Try to extract error message from backend

@@ -13,34 +13,27 @@ export default function VendorPartnerForm() {
 
   const [successMsg, setSuccessMsg] = useState("");
 
-  // ✅ Use env variable (set in project root .env file)
-  // Example: REACT_APP_API_URL=http://192.168.xx.xx:5000
-  const API_BASE =
-    process.env.REACT_APP_API_URL || "http://localhost:5000";
-
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     try {
-      const res = await fetch(`${API_BASE}/api/vendors`, {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify(formData),
-});
+      // ✅ Get existing submissions from localStorage
+      const existing = JSON.parse(localStorage.getItem("submissions")) || [];
 
+      // ✅ Add new submission
+      const updated = [...existing, formData];
 
-      if (!res.ok) {
-        // Try to extract error message from backend
-        const errData = await res.json().catch(() => ({}));
-        throw new Error(errData.error || "Failed to submit form");
-      }
+      // ✅ Save back to localStorage
+      localStorage.setItem("submissions", JSON.stringify(updated));
 
-      // Success
+      // ✅ Success message
       setSuccessMsg("✅ Your Vendor Partner form has been submitted successfully!");
+
+      // ✅ Reset form
       setFormData({
         companyName: "",
         contactPerson: "",
@@ -50,8 +43,8 @@ export default function VendorPartnerForm() {
         location: "",
       });
     } catch (err) {
-      console.error("Error submitting Vendor Partner form:", err);
-      setSuccessMsg(`⚠️ ${err.message || "Server error. Please try again later."}`);
+      console.error("Error saving Vendor Partner form:", err);
+      setSuccessMsg("⚠️ Failed to save submission. Please try again.");
     }
   };
 

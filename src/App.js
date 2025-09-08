@@ -1,5 +1,5 @@
 // src/App.js
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import useDeviceType from "./hooks/useDeviceType";
@@ -17,6 +17,9 @@ import BlogDetail from "./pages/BlogDetail";
 import ResourceDetail from "./pages/ResourceDetail";
 import AllResources from "./pages/AllResources";
 
+// Admin Pages
+import AdminLogin from "./pages/AdminLogin";
+import AdminDashboard from "./pages/AdminDashboard";
 
 // Layout
 import Layout from "./Layout/Layout";
@@ -95,6 +98,7 @@ function ScrollToSection() {
 // ===== App =====
 export default function App() {
   const isMobile = useDeviceType();
+  const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem("token"));
 
   return (
     <>
@@ -127,7 +131,20 @@ export default function App() {
         <Route path="/resources/:id" element={<ResourceDetail />} />
         <Route path="/resources/all" element={<AllResources />} />
 
-        
+        {/* Admin Routes */}
+        <Route
+          path="/admin"
+          element={
+            loggedIn ? (
+              <AdminDashboard onLogout={() => {
+                localStorage.removeItem("token");
+                setLoggedIn(false);
+              }} />
+            ) : (
+              <AdminLogin onLogin={() => setLoggedIn(true)} />
+            )
+          }
+        />
       </Routes>
     </>
   );

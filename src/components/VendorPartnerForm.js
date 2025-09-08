@@ -13,8 +13,10 @@ export default function VendorPartnerForm() {
 
   const [successMsg, setSuccessMsg] = useState("");
 
-  // 👇 Use env variable (set in .env file for React)
-  const API_BASE = process.env.REACT_APP_API_URL || "http://localhost:5000";
+  // ✅ Use env variable (set in project root .env file)
+  // Example: REACT_APP_API_URL=http://192.168.xx.xx:5000
+  const API_BASE =
+    process.env.REACT_APP_API_URL || "http://localhost:5000";
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -30,23 +32,25 @@ export default function VendorPartnerForm() {
         body: JSON.stringify(formData),
       });
 
-      if (res.ok) {
-        setSuccessMsg("✅ Your Vendor Partner form has been submitted successfully!");
-        setFormData({
-          companyName: "",
-          contactPerson: "",
-          email: "",
-          phone: "",
-          services: "",
-          location: "",
-        });
-      } else {
-        const errData = await res.json();
-        setSuccessMsg(`❌ Failed: ${errData.error || "Please try again."}`);
+      if (!res.ok) {
+        // Try to extract error message from backend
+        const errData = await res.json().catch(() => ({}));
+        throw new Error(errData.error || "Failed to submit form");
       }
+
+      // Success
+      setSuccessMsg("✅ Your Vendor Partner form has been submitted successfully!");
+      setFormData({
+        companyName: "",
+        contactPerson: "",
+        email: "",
+        phone: "",
+        services: "",
+        location: "",
+      });
     } catch (err) {
       console.error("Error submitting Vendor Partner form:", err);
-      setSuccessMsg("⚠️ Server error. Please try again later.");
+      setSuccessMsg(`⚠️ ${err.message || "Server error. Please try again later."}`);
     }
   };
 

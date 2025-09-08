@@ -13,6 +13,9 @@ export default function VendorPartnerForm() {
 
   const [successMsg, setSuccessMsg] = useState("");
 
+  // 👇 Use env variable (set in .env file for React)
+  const API_BASE = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -21,7 +24,7 @@ export default function VendorPartnerForm() {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:5000/api/vendors", {
+      const res = await fetch(`${API_BASE}/api/vendors`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

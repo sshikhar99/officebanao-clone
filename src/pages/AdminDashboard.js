@@ -31,9 +31,32 @@ export default function AdminDashboard() {
     loadData();
   }, [API_BASE]);
 
+  // ✅ Clear submissions from localStorage
+  const handleClear = () => {
+    if (window.confirm("Are you sure you want to clear all submissions?")) {
+      localStorage.removeItem("submissions");
+      setSubmissions([]); // reset state
+    }
+  };
+
   return (
     <div style={{ padding: "20px" }}>
       <h2 style={{ fontWeight: "bold", marginBottom: "20px" }}>📊 Admin Dashboard</h2>
+
+      <button
+        onClick={handleClear}
+        style={{
+          marginBottom: "20px",
+          padding: "10px 15px",
+          background: "red",
+          color: "white",
+          border: "none",
+          borderRadius: "6px",
+          cursor: "pointer",
+        }}
+      >
+        🗑️ Clear All Submissions
+      </button>
 
       {submissions.length === 0 ? (
         <p>No submissions yet.</p>

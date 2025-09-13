@@ -4,11 +4,19 @@ import cors from "cors";
 import partnerRoutes from "./routes/partnerRoutes.js";
 import "./initDb.js"; // run DB initialization
 
-const app = express();
+
 
 // Middlewares
-app.use(cors());
-app.use(express.json());
+const express = require('express');
+const cors = require('cors');
+const app = express();
+
+// Allow your frontend origin
+app.use(cors({
+  origin: 'http://officebanao-clone.vercel.app:3000', // your React/Angular/Vue frontend
+  methods: ['GET','POST','PUT','DELETE'],
+  credentials: true
+}));
 
 // Routes
 app.use("/api/partners", partnerRoutes);

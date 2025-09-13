@@ -13,7 +13,7 @@ const app = express();
 
 // Allow your frontend origin
 app.use(cors({
-  origin: 'http://officebanao-clone.vercel.app:3000', // your React/Angular/Vue frontend
+  origin: 'http://localhost:3000', // your React/Angular/Vue frontend
   methods: ['GET','POST','PUT','DELETE'],
   credentials: true
 }));

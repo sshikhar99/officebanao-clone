@@ -1,17 +1,24 @@
 {
   "files": {
-    "main.css": "/static/css/main.4994e838.css",
-    "main.js": "/static/js/main.677c9704.js",
-    "static/media/project3.webp": "/static/media/project3.d48a37460ecb56d69306.webp",
-    "static/media/hero-bg.jpg": "/static/media/hero-bg.0770d4a22b79999354c8.jpg",
-    "static/media/project1.webp": "/static/media/project1.a72f7de65233f4eba7a7.webp",
-    "static/media/project2.webp": "/static/media/project2.51e1636535f2ecf0a7bc.webp",
-    "index.html": "/index.html",
-    "main.4994e838.css.map": "/static/css/main.4994e838.css.map",
-    "main.677c9704.js.map": "/static/js/main.677c9704.js.map"
+    "main.css": "/sshikhar99/officebanao-clone/static/css/main.196a07da.css",
+    "main.js": "/sshikhar99/officebanao-clone/static/js/main.134b247a.js",
+    "static/media/project1.webp": "/sshikhar99/officebanao-clone/static/media/project1.c960bc35c16665091e72.webp",
+    "static/media/ihg.png": "/sshikhar99/officebanao-clone/static/media/ihg.771faa9b7368d20a0e87.png",
+    "static/media/project2.webp": "/sshikhar99/officebanao-clone/static/media/project2.194971dfde6537fc41fa.webp",
+    "static/media/pioneer.png": "/sshikhar99/officebanao-clone/static/media/pioneer.dd21ff4d6a1af547cfaf.png",
+    "static/media/blusmart.png": "/sshikhar99/officebanao-clone/static/media/blusmart.9f90e1d1db5bc4c2faf9.png",
+    "static/media/project3.webp": "/sshikhar99/officebanao-clone/static/media/project3.7c947002a3502853c876.webp",
+    "static/media/okaya.png": "/sshikhar99/officebanao-clone/static/media/okaya.217df722b50e80d5128b.png",
+    "static/media/slick.svg": "/sshikhar99/officebanao-clone/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/sshikhar99/officebanao-clone/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/sshikhar99/officebanao-clone/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/sshikhar99/officebanao-clone/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/sshikhar99/officebanao-clone/index.html",
+    "main.196a07da.css.map": "/sshikhar99/officebanao-clone/static/css/main.196a07da.css.map",
+    "main.134b247a.js.map": "/sshikhar99/officebanao-clone/static/js/main.134b247a.js.map"
   },
   "entrypoints": [
-    "static/css/main.4994e838.css",
-    "static/js/main.677c9704.js"
+    "static/css/main.196a07da.css",
+    "static/js/main.134b247a.js"
   ]
 }

@@ -1,22 +1,25 @@
 // backend/server.js
 import express from "express";
 import cors from "cors";
-import dotenv from "dotenv";
 import partnerRoutes from "./routes/partnerRoutes.js";
-
-dotenv.config();
+import "./initDb.js"; // run DB initialization
 
 const app = express();
-const PORT = process.env.PORT || 5000;
 
-// Middleware
+// Middlewares
 app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use("/api/partner", partnerRoutes);
+app.use("/api/partners", partnerRoutes);
+
+// Default route
+app.get("/", (req, res) => {
+  res.send("✅ OfficeBanao Backend API is running...");
+});
 
 // Start server
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-});
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () =>
+  console.log(`🚀 Server running at http://localhost:${PORT}`)
+);

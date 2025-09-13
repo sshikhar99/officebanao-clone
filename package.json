@@ -2,14 +2,13 @@
   "name": "officebanao-clone",
   "version": "1.0.0",
   "private": true,
+  "description": "OfficeBanao Clone frontend",
+  "main": "index.js",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.11.0",
-    "cors": "^2.8.5",
-    "express": "^5.1.0",
-    "nodemon": "^3.1.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.5.0",
@@ -19,12 +18,11 @@
     "react-scroll": "^1.9.3",
     "react-slick": "^0.31.0",
     "slick-carousel": "^1.8.1",
-    "sqlite3": "^5.1.7",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "set CI=false && react-scripts --openssl-legacy-provider build",
+    "build": "CI=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -50,17 +48,12 @@
     "node": "22.x",
     "npm": "9.x"
   },
-  "description": "",
-  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sshikhar99/officebanao-clone.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/sshikhar99/officebanao-clone/issues"
   },
-  "homepage": "https://github.com/sshikhar99/officebanao-clone#readme"
+  "homepage": "."
 }

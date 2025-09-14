@@ -13,8 +13,8 @@ export default function PartnerForm() {
   });
   const [successMsg, setSuccessMsg] = useState("");
 
-  // ✅ Local backend API instead of Google Apps Script
-  const API_BASE = "http://localhost:5000/api/partners";
+  // ✅ Backend API - uses environment variable for different deployments
+  const API_BASE = `${process.env.REACT_APP_API_URL || 'http://localhost:5001'}/api/partners`;
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });

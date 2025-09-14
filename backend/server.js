@@ -4,7 +4,7 @@ import cors from "cors";
 import partnerRoutes from "./routes/partnerRoutes.js";
 import "./initDb.js"; // run DB initialization
 
-
+const app = express();
 
 // Middlewares
 app.use(cors({
@@ -47,5 +47,6 @@ app.get("/", (req, res) => {
 // Start server
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () =>
-  console.log(`🚀 Server running at http://localhost:${PORT}`)
+  console.log(`🚀 Server running at 
+    http://localhost:${PORT}`)
 );

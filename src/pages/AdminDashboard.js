@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 export default function AdminDashboard() {
   const [submissions, setSubmissions] = useState([]);
-  const API_BASE = process.env.REACT_APP_API_URL || "";
+  const API_BASE = process.env.REACT_APP_API_URL || "http://localhost:5001";
 
   useEffect(() => {
     const loadData = async () => {
@@ -15,10 +15,10 @@ export default function AdminDashboard() {
 
         // ✅ 2. Load from backend if available
         if (API_BASE) {
-          const res = await fetch(`${API_BASE}/api/vendors`);
+          const res = await fetch(`${API_BASE}/api/partners`);
           if (res.ok) {
             const backendData = await res.json();
-            data = [...data, ...backendData];
+            data = [...data, ...backendData.data || backendData];
           }
         }
 

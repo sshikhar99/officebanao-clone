@@ -1,2 +1,4 @@
-node_modules
 *.db
+/build/
+/backend/partners.db
+node_modules/

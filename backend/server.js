@@ -1,43 +1,31 @@
-// backend/server.js
 import express from "express";
 import cors from "cors";
 import partnerRoutes from "./routes/partnerRoutes.js";
-import "./initDb.js"; // run DB initialization
+import "./initDb.js";
 
 const app = express();
 
-// --- CORS Middleware ---
-const allowedOrigins = [
-  "http://localhost:3000",
-  "http://127.0.0.1:3000",
-  "https://officebanao-clone.vercel.app"
-];
-
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin) || /^http:\/\/localhost:\d+$/.test(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true,
-  })
-);
-
+// CORS
+app.use(cors());
 app.use(express.json());
 
-// --- API Routes ---
+// API routes
 app.use("/api/partners", partnerRoutes);
 
-// --- Default Route ---
-app.get("/", (req, res) => {
-  res.send("✅ OfficeBanao Backend API is running...");
+// ✅ Serve React build
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.use(express.static(path.join(__dirname, "../frontend/build")));
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
 });
 
-// --- Start Server ---
+
+// Start server
 const PORT = process.env.PORT || 5001;
-app.listen(PORT, () => {
-  console.log(`🚀 Backend running at http://localhost:${PORT}`);
-});
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));

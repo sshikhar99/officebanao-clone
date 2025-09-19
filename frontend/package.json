@@ -2,8 +2,6 @@
   "name": "officebanao-frontend",
   "version": "1.0.0",
   "private": true,
-  "description": "OfficeBanao Clone frontend",
-  "main": "index.js",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -27,33 +25,15 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "extends": ["react-app", "react-app/jest"]
   },
   "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
+    "production": [">0.2%", "not dead", "not op_mini all"],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "engines": {
-    "node": "22.x",
-    "npm": "9.x"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sshikhar99/officebanao-clone.git"
-  },
-  "bugs": {
-    "url": "https://github.com/sshikhar99/officebanao-clone/issues"
   },
   "homepage": "."
 }

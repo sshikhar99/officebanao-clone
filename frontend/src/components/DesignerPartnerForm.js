@@ -22,14 +22,18 @@ export default function DesignerPartnerForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSuccessMsg("⚠️ Something went wrong -1");
     try {
+      setSuccessMsg("⚠️ Something went wrong 0");
       const res = await fetch(API_BASE, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
+      setSuccessMsg("⚠️ Something went wrong 1");
 
       const data = await res.json();
+      setSuccessMsg("⚠️ Something went wrong 2");
       if (res.ok) {
         setSuccessMsg("✅ Your Designer Partner form has been submitted successfully!");
         setFormData({

@@ -1,36 +1,29 @@
-// backend/routes/partnerRoutes.js
 import express from "express";
-import db from "../db.js";
+import Partner from "../models/Partner.js";
 
 const router = express.Router();
 
-// POST → Insert a new partner
-router.post("/", (req, res) => {
-  const { partnerType, companyName, contactPerson, email, phone, services, location } = req.body;
-
-  const sql = `INSERT INTO partners 
-    (partnerType, companyName, contactPerson, email, phone, services, location) 
-    VALUES (?, ?, ?, ?, ?, ?, ?)`;
-
-  db.run(sql, [partnerType, companyName, contactPerson, email, phone, services, location], function (err) {
-    if (err) {
-      console.error("❌ DB Insert Error:", err.message);
-      return res.status(500).json({ error: "Database insert failed" });
-    }
-    res.json({ status: "success", id: this.lastID });
-  });
+// Create a new partner
+router.post("/", async (req, res) => {
+  try {
+    const partnerData = req.body;
+    const partner = new Partner(partnerData);
+    const savedPartner = await partner.save();
+    res.status(201).json(savedPartner);
+  } catch (err) {
+    console.error("❌ Error saving partner:", err);
+    res.status(500).json({ error: "Server error, could not save partner" });
+  }
 });
 
-// GET → Fetch all partners
-router.get("/", (req, res) => {
-  const sql = "SELECT * FROM partners";
-  db.all(sql, [], (err, rows) => {
-    if (err) {
-      console.error("❌ DB Fetch Error:", err.message);
-      return res.status(500).json({ error: "Database fetch failed" });
-    }
-    res.json({ status: "success", data: rows });
-  });
+// Optional: Get all partners
+router.get("/", async (req, res) => {
+  try {
+    const partners = await Partner.find().sort({ createdAt: -1 });
+    res.json(partners);
+  } catch (err) {
+    res.status(500).json({ error: "Server error" });
+  }
 });
 
 export default router;

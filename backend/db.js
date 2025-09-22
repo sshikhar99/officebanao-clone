@@ -1,22 +1,18 @@
-// backend/db.js
-import sqlite3 from "sqlite3";
-import path from "path";
-import { fileURLToPath } from "url";
+import mongoose from "mongoose";
 
-// Handle __dirname in ES modules
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// Database file path
-const dbPath = path.join(__dirname, "partners.db");
-
-// Create SQLite DB connection
-const db = new sqlite3.Database(dbPath, (err) => {
-  if (err) {
-    console.error("❌ Error opening DB:", err.message);
-  } else {
-    console.log("✅ Connected to SQLite database.");
+const connectDB = async () => {
+  try {
+    const uri = process.env.MONGO_URI;
+    if (!uri) throw new Error("MONGO_URI not defined");
+    await mongoose.connect(uri, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log("✅ MongoDB connected");
+  } catch (err) {
+    console.error("❌ MongoDB connection error:", err);
+    process.exit(1);
   }
-});
+};
 
-export default db;
+export default connectDB;
